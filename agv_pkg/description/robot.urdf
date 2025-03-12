@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+    <!-- <xacro:property name="pi" value="3.141592653597931"/> -->
+
+<robot 
+  name="AGV">
+
+  <!-- Empty link to link the AGV to the world -->
+  <link 
+    name="base_footprint">
+  </link>
+
+  <!-- CHASSIS -->
+  <!-- Connection between base_footprint and chassislink -->
+  <joint
+    name="joint_chassis_to_footprint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.2"
+      rpy="0 0 0" />
+    <parent
+      link="base_footprint" />
+    <child
+      link="chassis_link" />
+  </joint>
+  <link
+    name="chassis_link">
+<inertial>
+      <origin
+        xyz="0.025237 1.2945E-05 -0.056914"
+        rpy="0 0 0" />
+      <mass
+        value="1.633" />
+      <inertia
+        ixx="0.011274"
+        ixy="-2.8299E-09"
+        ixz="-9.573E-07"
+        iyy="0.013009"
+        iyz="-5.8805E-11"
+        izz="0.023965" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/chassis_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/chassis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LEFT FRONT WHEEL -->
+    <!-- STEERING -->
+  <joint
+    name="joint_chassis_to_steering_left_front"
+    type="continuous">
+    <origin
+      xyz="0.255550000000001 0.155549999999982 -0.138712499998103"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="Left_wheel_front_steering_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Left_wheel_front_steering_link">
+<inertial>
+      <origin
+        xyz="-4.7964E-09 0.0017232 -0.014598"
+        rpy="0 0 0" />
+      <mass
+        value="0.15549" />
+      <inertia
+        ixx="3.8266E-05"
+        ixy="-1.1718E-11"
+        ixz="8.8188E-12"
+        iyy="5.3605E-05"
+        iyz="1.2501E-07"
+        izz="7.5895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LF_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LF_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <!-- DRIVING -->
+  <joint
+    name="joint_steering_to_wheel_left_front"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.046037"
+      rpy="0 0 0" />
+    <parent
+      link="Left_wheel_front_steering_link" />
+    <child
+      link="Left_wheel_front_driving_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Left_wheel_front_driving_link">
+    <inertial>
+      <origin
+        xyz="-6.4834E-08 -0.0017979 8.3053E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.082726" />
+      <inertia
+        ixx="3.6609E-05"
+        ixy="4.9989E-12"
+        ixz="1.0933E-12"
+        iyy="6.5135E-05"
+        iyz="1.2166E-10"
+        izz="3.6626E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LFW_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LFW_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LEFT REAR WHEEL -->
+    <!-- STEERING -->
+  <joint
+    name="joint_chassis_to_steering_left_rear"
+    type="continuous">
+    <origin
+      xyz="-0.255549999999999 0.15555 -0.138712499998099"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="Left_wheel_rear_steering_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Left_wheel_rear_steering_link">
+    <inertial>
+      <origin
+        xyz="-5.0415E-09 0.0017232 -0.014598"
+        rpy="0 0 0" />
+      <mass
+        value="0.15549" />
+      <inertia
+        ixx="3.8266E-05"
+        ixy="-1.1713E-11"
+        ixz="8.8832E-12"
+        iyy="5.3605E-05"
+        iyz="1.2501E-07"
+        izz="7.5895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LB_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LB_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <!-- DRIVING -->
+  <joint
+    name="joint_steering_to_wheel_left_rear"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.046038"
+      rpy="0 0 0" />
+    <parent
+      link="Left_wheel_rear_steering_link" />
+    <child
+      link="Left_wheel_rear_driving_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>  
+  <link
+    name="Left_wheel_rear_driving_link">
+    <inertial>
+      <origin
+        xyz="-6.4925E-08 -0.0017979 8.9125E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.082726" />
+      <inertia
+        ixx="3.6609E-05"
+        ixy="4.9205E-12"
+        ixz="1.2269E-12"
+        iyy="6.5135E-05"
+        iyz="1.2164E-10"
+        izz="3.6626E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LBW_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/LBW_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- RIGHT REAR WHEEL -->
+    <!-- STEERING -->  
+  <joint
+    name="joint_chassis_to_steering_right_rear"
+    type="continuous">
+    <origin
+      xyz="-0.255550000000001 -0.155550000000001 -0.138712499998098"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="Right_wheel_rear_steering_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Right_wheel_rear_steering_link">
+    <inertial>
+      <origin
+        xyz="4.5222E-09 -0.0017232 -0.014598"
+        rpy="0 0 0" />
+      <mass
+        value="0.15549" />
+      <inertia
+        ixx="3.8266E-05"
+        ixy="-1.1438E-11"
+        ixz="-8.2947E-12"
+        iyy="5.3605E-05"
+        iyz="-1.2501E-07"
+        izz="7.5895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RB_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RB_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <!-- DRIVING -->
+  <joint
+    name="joint_steering_to_wheel_right_rear"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.046038"
+      rpy="0 0 0" />
+    <parent
+      link="Right_wheel_rear_steering_link" />
+    <child
+      link="Right_wheel_rear_driving_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Right_wheel_rear_driving_link">
+    <inertial>
+      <origin
+        xyz="6.4622E-08 0.0017979 6.2292E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.082726" />
+      <inertia
+        ixx="3.6609E-05"
+        ixy="4.8252E-12"
+        ixz="-1.2576E-12"
+        iyy="6.5135E-05"
+        iyz="-1.2166E-10"
+        izz="3.6626E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RBW_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RBW_Link.STL" />
+      </geometry>
+    </collision>
+  </link>   
+
+  <!-- RIGHT FRONT WHEEL -->
+    <!-- STEERING -->
+  <joint
+    name="joint_chassis_to_steering_right_front"
+    type="continuous">
+    <origin
+      xyz="0.255549999999999 -0.155550000000019 -0.1387124999981"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="Right_wheel_front_steering_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Right_wheel_front_steering_link">
+    <inertial>
+      <origin
+        xyz="4.7964E-09 -0.0017232 -0.014598"
+        rpy="0 0 0" />
+      <mass
+        value="0.15549" />
+      <inertia
+        ixx="3.8266E-05"
+        ixy="-1.1718E-11"
+        ixz="-8.8188E-12"
+        iyy="5.3605E-05"
+        iyz="-1.2501E-07"
+        izz="7.5895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RF_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RF_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+    <!-- DRIVING -->
+  <joint
+    name="joint_steering_to_wheel_right_front"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.046038"
+      rpy="0 0 0" />
+    <parent
+      link="Right_wheel_front_steering_link" />
+    <child
+      link="Right_wheel_front_driving_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Right_wheel_front_driving_link">
+    <inertial>
+      <origin
+        xyz="6.4733E-08 0.0017979 2.4451E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.082726" />
+      <inertia
+        ixx="3.6609E-05"
+        ixy="4.91E-12"
+        ixz="-1.2581E-12"
+        iyy="6.5135E-05"
+        iyz="-1.2192E-10"
+        izz="3.6626E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RFW_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find agv_pkg)/meshes/RFW_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+</robot>
