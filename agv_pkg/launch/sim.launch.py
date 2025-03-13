@@ -77,10 +77,10 @@ def generate_launch_description():
         arguments=["joint_state_broadcaster"],
     )
 
-    # Launch the zinger swerve controller
+    # Launch the swerve controller
     swerve_controller = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory('zinger_swerve_controller'), 'launch', 'swerve_controller.launch.py')]),
+                    get_package_share_directory('swerve_controller'), 'launch', 'swerve_controller.launch.py')]),
                     launch_arguments={'use_sim_time':'true'}.items(),
                     )
     
@@ -100,6 +100,7 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         rsp,
+        swerve_controller,
         joystick,
         twist_mux,
         world_arg,
@@ -108,7 +109,6 @@ def generate_launch_description():
         velocity_spawner,
         steering_spawner,
         joint_broad_spawner,
-        swerve_controller,
         ros_gz_bridge,
         # ros_gz_image_bridge
     ])

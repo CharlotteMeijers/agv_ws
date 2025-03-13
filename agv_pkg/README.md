@@ -1,5 +1,5 @@
 ## Needed packages:
-- For Gazebo:
+For Gazebo:
  - ros-jazzy-tf-transformations
  - ros-jazzy-ros-gz
  - ros-jazzy-gz-ros2-control
@@ -7,7 +7,7 @@
  - ros-jazzy-ros2-controllers
  - ros-jazzy-twist-mux
 
-- For navigation:
+For navigation:
  - ros-jazzy-navigation2 
  - ros-jazzy-nav2-bringup
  - ros-jazzy-slam-toolbox
@@ -26,6 +26,10 @@ To tell in which state the wheels are:
 To view robot in rviz:
 
         rviz2 -d src/agv_pkg/config/view_bot.rviz
+
+To view robot with the obstacle map in rviz:
+
+        rviz2 -d src/agv_pkg/config/view_bot_in_map.rviz
 
 ## Gazebo
 To drive robot in Gazebo (use the left joystick to move forward and backwards and the right joystick to turn):
