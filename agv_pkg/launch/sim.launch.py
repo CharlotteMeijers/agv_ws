@@ -10,12 +10,14 @@ from launch_ros.actions import Node
 def generate_launch_description():
     package_name='agv_pkg' 
 
+    # Publish robot description topic
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
                 )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
+    # Launch the joystick launch file to be able to use the jointstick
     joystick = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','joystick.launch.py'
@@ -35,7 +37,7 @@ def generate_launch_description():
     empty_world = os.path.join(
         get_package_share_directory(package_name),
         'worlds',
-        'empty.world'
+        'obstacles.world'
         )    
     world = LaunchConfiguration('world')
     world_arg = DeclareLaunchArgument(
@@ -76,11 +78,11 @@ def generate_launch_description():
     )
 
     # Launch the zinger swerve controller
-    # swerve_controller = IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource([os.path.join(
-    #                 get_package_share_directory('zinger_swerve_controller'), 'launch', 'swerve_controller.launch.py')]),
-    #                 launch_arguments={'use_sim_time':'true'}.items(),
-    #                 )
+    swerve_controller = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('zinger_swerve_controller'), 'launch', 'swerve_controller.launch.py')]),
+                    launch_arguments={'use_sim_time':'true'}.items(),
+                    )
     
     #Launch the ROS-GZ bridge
     bridge_params = os.path.join(get_package_share_directory(package_name),'config','gz_bridge.yaml')
@@ -106,7 +108,7 @@ def generate_launch_description():
         velocity_spawner,
         steering_spawner,
         joint_broad_spawner,
-        # swerve_controller,
+        swerve_controller,
         ros_gz_bridge,
         # ros_gz_image_bridge
     ])
