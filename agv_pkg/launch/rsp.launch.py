@@ -9,12 +9,27 @@ from launch_ros.actions import Node
 
 import xacro
 
+ARGUMENTS = [
+    DeclareLaunchArgument(
+        'use_sim_time',
+        default_value='false',
+        choices=['true', 'false'],
+        description='Use sim time if true'
+    ),
+    DeclareLaunchArgument(
+        'use_ros2_control',
+        default_value='true',
+        choices=['true','false'],
+        description='Use ros2_control if true'
+    ),
+]
 
 def generate_launch_description():
 
     # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_ros2_control = LaunchConfiguration('use_ros2_control')
+    ld = LaunchDescription(ARGUMENTS)
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('agv_pkg'))
@@ -31,18 +46,7 @@ def generate_launch_description():
         output='screen',
         parameters=[params]
     )
-
+    ld.add_action(node_robot_state_publisher)
 
     # Launch!
-    return LaunchDescription([
-        DeclareLaunchArgument(
-            'use_sim_time',
-            default_value='false',
-            description='Use sim time if true'),
-        DeclareLaunchArgument(
-            'use_ros2_control',
-            default_value='true',
-            description='Use ros2_control if true'),
-
-        node_robot_state_publisher
-    ])
+    return ld
