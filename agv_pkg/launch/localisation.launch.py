@@ -25,31 +25,37 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     ld = LaunchDescription(ARGUMENTS)
 
-    rviz_config = os.path.join(get_package_share_directory(package_name), 'config', 'view_robot_in_map.rviz')
-    rviz = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', rviz_config],
-    )
-    ld.add_action(rviz)
+    map_location = os.path.join(get_package_share_directory(package_name),'config','map_save.yaml')
 
-    slam_params = 'src/agv_pkg/config/mapper_params_online_async.yaml'
-    slam_toolbox = Node(
-        package='slam_toolbox',
-        executable='async_slam_toolbox_node',
+    map_server = Node(
+        package='nav2_map_server',
+        executable='map_server',
         output='screen',
         parameters=[
-            slam_params,
+        map_location,
             {'use_sim_time': use_sim_time}
         ],
-        # arguments=[
-        #     f'slam_params_file:={slam_params}',
-        #     f'use_sim_time:={use_sim_time}',
-        # ],
     )
-    ld.add_action(slam_toolbox)
+    ld.add_action(map_server)
 
+    amcl_server = Node(
+        package='nav2_amcl',
+        executable='amcl',
+        output='screen',
+        parameters=[
+            {'use_sim_time': use_sim_time}
+        ],
+    )
+    ld.add_action(amcl_server)
+
+    # Activate map_server and amcl node
+    activate_nodes = Node(
+            package='nav2_lifecycle_manager',
+            executable='lifecycle_manager',
+            name='lifecycle_manager_localization',
+            output='screen',
+            parameters=[{'use_sim_time': use_sim_time},
+                        {'node_names': 'map_server'}])
+    ld.add_action(activate_nodes)
 
     return ld

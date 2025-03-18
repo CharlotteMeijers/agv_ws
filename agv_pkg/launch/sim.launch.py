@@ -90,7 +90,7 @@ def generate_launch_description():
     ld.add_action(spawn_entity)
 
     controllers = TimerAction(
-        period=15.0,
+        period=8.0,
         actions= [
         #     GroupAction(
         # actions=[
