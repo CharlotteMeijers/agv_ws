@@ -136,6 +136,13 @@ def generate_launch_description():
     )
     ld.add_action(ros_gz_bridge)
 
+    ros_gz_image_bridge = Node(
+        package="ros_gz_image",
+        executable="image_bridge",
+        arguments=["/camera_left/image_raw", "/camera_right/image_raw"]
+    )
+    ld.add_action(ros_gz_image_bridge)
+
     # Launch the slam launch if there is a new map needed
     slam = IncludeLaunchDescription(
                     PythonLaunchDescriptionSource([os.path.join(

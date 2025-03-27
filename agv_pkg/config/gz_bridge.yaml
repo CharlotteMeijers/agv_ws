@@ -19,13 +19,19 @@
   gz_type_name: "gz.msgs.LaserScan"
   direction: GZ_TO_ROS
 
-# gz topic published by Sensors plugin (Camera)
-- ros_topic_name: "camera/camera_info"
-  gz_topic_name: "camera/camera_info"
+# gz topic published by Sensors plugin (left camera)
+- ros_topic_name: "camera_left/camera_info"
+  gz_topic_name: "camera_left/camera_info"
   ros_type_name: "sensor_msgs/msg/CameraInfo"
   gz_type_name: "gz.msgs.CameraInfo"
   direction: GZ_TO_ROS
 
+# gz topic published by Sensors plugin (right camera)
+- ros_topic_name: "camera_right/camera_info"
+  gz_topic_name: "camera_right/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
 
 # gz topic published by swerve_module plugin
 - ros_topic_name: "odom"
