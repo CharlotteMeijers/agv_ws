@@ -1,4 +1,4 @@
-## Needed packages:
+# Needed packages:
 For Gazebo:
  - ros-jazzy-tf-transformations
  - ros-jazzy-ros-gz
@@ -11,8 +11,9 @@ For navigation:
  - ros-jazzy-navigation2 
  - ros-jazzy-nav2-bringup
  - ros-jazzy-slam-toolbox
+ - ros-jazzy-joint-state-publisher
 
-
+# Run commands
 ## Robot description
 To publish the robot state:
 
@@ -41,40 +42,42 @@ To drive using the keyboard also launch the teleop_twist_keyboard:
         ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 ## Navigation
-To create a map:
+### Create map with SLAM
+Next to the Gazebo launch:
         
         ros2 launch agv_pkg sim.launch.py use_sim_time:=true make_new_map:=true
+
+or two seperate terminals with:
+
+        ros2 launch agv_pkg sim.launch.py use_sim_time:=true 
+        ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true slam_params_file:=agv_pkg/config/mapper_params_online_async.yaml
+
+
         
-Use rviz slam toolbox panel to save in different formats (save and serialized)
+Use rviz slam toolbox panel to save in different formats (save and serialized) or 
 
-To publish the saved map to the /map topic first initialize the node:
-        ros2 run nav2_nav_server map_server --ros-args -p yaml_filename:=my_map_save.yaml -p use_sim_time:=true
+        ros2 run nav2_map_server map_saver_cli -f ~/map
 
-and then activate the node:
-        ros2 run nav2_util lifecycle_bringup map_server
+Online asynchronized SLAM is used. Online means it runs live and not on recorded logs. Asynchronized means that not every scan needs to be processed, but only the last one. This avoids lagging but means that scans can be skipped.
 
-Change RViz durability to transient local
+### Localise only tested for Zinger: 
+Next to the zinger Gazebo launch:
+        
+        ros2 launch agv_pkg zinger_sim.launch.py use_sim_time:=true 
 
-initialize amcl:
-        ros2 run nav2_amcl amcl --ros-args -p use_sim_time:=true
+Run the localisation file:
 
-and then activate the node:
-        ros2 run nav2_util lifecycle_bringup amcl
+        ros2 launch agv_pkg zinger_loc.launch.py use_sim_time:=true
 
-click the 2D Pose estimate to give the amcl an initial pose (with orientation)
+Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl (RVIZ)
 
-For navigation:
-ros2 launch nav2_bringup navigation_launch.py use_sim_time:=true
+### Navigate to point only tested for Zinger: 
+Next to the zinger Gazebo launch:
+        
+        ros2 launch agv_pkg zinger_sim.launch.py use_sim_time:=true 
 
-add new map and set the map to the costmap
+Run the localisation file:
 
+        ros2 launch agv_pkg zinger_nav.launch.py use_sim_time:=true
 
-These changes are needed in the swerve_controller.py under def get_drive_modules(self) -> List[DriveModule]: 
-
-        robot_length = 0.5111 #511.1mm
-        robot_width = 0.3111 #311.1mm
-
-        steering_radius = 0.0 #0mm
-
-        wheel_radius = 0.0378 #75.6mm diameter, 37.8mm
-        wheel_width = 0.0254 #25.4mm
+Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl and use the 2D goal pose to let the zinger robot drive to that pose (RVIZ)

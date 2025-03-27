@@ -8,7 +8,7 @@ swerve_controller:
     position_controller_name: "drive_module_steering_angle_controller"
     velocity_controller_name: "drive_module_velocity_controller"
 
-    cycle_fequency: 50
+    cycle_fequency: 1000
 
     steering_joints:
       - joint_chassis_to_steering_left_front

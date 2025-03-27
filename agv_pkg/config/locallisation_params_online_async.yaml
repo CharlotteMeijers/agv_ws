@@ -1,3 +1,5 @@
+#Lukt niet om de map in te laden
+
 slam_toolbox:
   ros__parameters:
 
@@ -13,13 +15,13 @@ slam_toolbox:
     odom_frame: odom
     map_frame: map
     base_frame: base_footprint
-    scan_topic: /scan
+    scan_topic: scan
     mode: localization
 
     # if you'd like to immediately start continuing a map at a given pose
     # or at the dock, but they are mutually exclusive, if pose is given
     # will use pose
-    map_file_name: /home/zwier/agv_ws/src/agv_pkg/config/my_map_serialize
+    map_file_name: /home/zwier/agv_ws/src/agv_pkg/urdf/map_serialize
     # map_start_pose: [0.0, 0.0, 0.0]
     map_start_at_dock: true
 

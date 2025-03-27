@@ -216,7 +216,7 @@
     </xacro:macro>
 
     <!-- Lidar sensor -->
-    <xacro:macro name="sensor_lidar" params="name parent_link chassis_top_relative_height">
+    <!-- <xacro:macro name="sensor_lidar" params="name parent_link chassis_top_relative_height">
 
         <xacro:property name="mass"     value="0.17"/>
         <xacro:property name="length_x" value="0.071" />
@@ -258,7 +258,7 @@
                     izz="${(1/12) * mass * (length_x*length_x + length_y*length_y)}" />
             </inertial>
         </link>
-    </xacro:macro>
+    </xacro:macro> -->
 
 
 
