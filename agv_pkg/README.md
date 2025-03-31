@@ -32,6 +32,10 @@ To view robot with the obstacle map in rviz:
 
         rviz2 -d src/agv_pkg/config/view_bot_in_map.rviz
 
+To view robot with the obstacle map, costmap and planned trajectory in rviz:
+
+        rviz2 -d src/agv_pkg/config/view_bot_planning.rviz
+
 ## Gazebo
 To drive robot in Gazebo (use the left joystick to move forward and backwards and the right joystick to turn):
 

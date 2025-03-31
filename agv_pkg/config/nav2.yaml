@@ -1,5 +1,6 @@
 bt_navigator:
   ros__parameters:
+    use_sim_time: True
     global_frame: map
     robot_base_frame: base_footprint
     odom_topic: /odom
@@ -27,6 +28,7 @@ bt_navigator:
 
 controller_server:
   ros__parameters:
+    use_sim_time: True
     controller_frequency: 20.0
     costmap_update_timeout: 0.30
     min_x_velocity_threshold: 0.001
@@ -56,7 +58,9 @@ controller_server:
       yaw_goal_tolerance: 0.25
     # DWB parameters
     FollowPath:
-      plugin: "dwb_core::DWBLocalPlanner"
+      plugin: "nav2_rotation_shim_controller::RotationShimController"
+      primary_controller: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
+      # primary_controller: nav2_mppi_controller::MPPIController
       debug_trajectory_details: True
       min_vel_x: 0.0
       min_vel_y: 0.0
@@ -119,7 +123,7 @@ controller_server:
       transform_tolerance: 0.1
       temperature: 0.3
       gamma: 0.015
-      motion_model: "DiffDrive"
+      motion_model: "Omni"
       visualize: true
       regenerate_noises: true
       TrajectoryVisualizer:
