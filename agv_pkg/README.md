@@ -98,5 +98,3 @@ To be able to use the home.sdf, add the following to the ~/.bashrc
         export GZ_SIM_RESOURCE_PATH=~/agv_ws/src/agv_pkg/worlds/gazebo_models
 
 Don't forget to source the ~/.bashrc before running again
-
-        source ~/.bashrc
