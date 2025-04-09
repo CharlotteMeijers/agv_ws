@@ -15,7 +15,7 @@
             <kp>500000.0</kp>
             <kd>10.0</kd>
             <minDepth>0.001</minDepth>
-            <maxVel>0.1</maxVel>
+            <maxVel>0.5</maxVel>
             <fdir1>1 0 0</fdir1>
             <selfCollide>true</selfCollide>
         </gazebo>
@@ -145,7 +145,7 @@
 
     <gazebo>
         <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin" filename="libgz_ros2_control-system.so">
-            <parameters>$(find agv_pkg)/config/my_controllers.yaml</parameters>
+            <parameters>$(find agv_pkg)/config/zinger.yaml</parameters>
             <parameters>$(find agv_pkg)/config/gaz_ros2_ctl_use_sim.yaml</parameters>
         </plugin>
     </gazebo>

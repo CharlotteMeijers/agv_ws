@@ -25,7 +25,7 @@ def generate_launch_description():
     map_file_path = os.path.join(
         get_package_share_directory(package_name),
         'config',
-        'map_save.yaml'
+        'home_map.yaml'
     )
 
     localisation_params_path = os.path.join(

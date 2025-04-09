@@ -85,3 +85,18 @@ Run the localisation file:
         ros2 launch agv_pkg zinger_nav.launch.py use_sim_time:=true
 
 Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl and use the 2D goal pose to let the zinger robot drive to that pose (RVIZ)
+
+# Update current pose (what the Jetson Nano should sent)
+ros2 topic pub -1 /initialpose geometry_msgs/PoseWithCovarianceStamped '{ header: {stamp: {sec: 0, nanosec: 0}, frame_id: "map"}, pose: { pose: {position: {x: 0.1, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0} }}}'
+
+Use docker for the communication between jetson and raspberry
+update initial pose on the jetson, send that to the raspberry
+
+# Home.sdf
+To be able to use the home.sdf, add the following to the ~/.bashrc
+
+        export GZ_SIM_RESOURCE_PATH=~/agv_ws/src/agv_pkg/worlds/gazebo_models
+
+Don't forget to source the ~/.bashrc before running again
+
+        source ~/.bashrc

@@ -64,7 +64,7 @@ def generate_launch_description():
     empty_world = os.path.join(
         get_package_share_directory(package_name),
         'worlds',
-        'obstacles.world'
+        'home.sdf'
         )    
     world = LaunchConfiguration('world')
     world_arg = DeclareLaunchArgument(
