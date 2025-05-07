@@ -1,0 +1,66 @@
+[0.557s] Invoking command in '/home/zwier/agv_ws/build/swerve_controller': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/zwier/agv_ws/build/swerve_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/zwier/agv_ws/build/swerve_controller/build
+[0.703s] running develop
+[0.797s] Removing /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve-controller.egg-link (link to .)
+[0.811s] Invoked command in '/home/zwier/agv_ws/build/swerve_controller' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/zwier/agv_ws/build/swerve_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/zwier/agv_ws/build/swerve_controller/build
+[0.812s] Invoking command in '/home/zwier/agv_ws/src/swerve_controller': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/zwier/agv_ws/build/swerve_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/swerve_controller build --build-base /home/zwier/agv_ws/build/swerve_controller/build install --record /home/zwier/agv_ws/build/swerve_controller/install.log --single-version-externally-managed install_data --force
+[0.960s] running egg_info
+[0.970s] writing ../../build/swerve_controller/swerve_controller.egg-info/PKG-INFO
+[0.970s] writing dependency_links to ../../build/swerve_controller/swerve_controller.egg-info/dependency_links.txt
+[0.970s] writing entry points to ../../build/swerve_controller/swerve_controller.egg-info/entry_points.txt
+[0.970s] writing requirements to ../../build/swerve_controller/swerve_controller.egg-info/requires.txt
+[0.970s] writing top-level names to ../../build/swerve_controller/swerve_controller.egg-info/top_level.txt
+[0.992s] reading manifest file '../../build/swerve_controller/swerve_controller.egg-info/SOURCES.txt'
+[0.992s] adding license file 'LICENSE'
+[0.992s] writing manifest file '../../build/swerve_controller/swerve_controller.egg-info/SOURCES.txt'
+[0.992s] running build
+[0.992s] running build_py
+[0.993s] creating /home/zwier/agv_ws/build/swerve_controller/build
+[0.993s] creating /home/zwier/agv_ws/build/swerve_controller/build/lib
+[0.993s] creating /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.993s] copying swerve_controller/geometry.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.993s] copying swerve_controller/drive_module.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.993s] copying swerve_controller/control_model.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.993s] copying swerve_controller/swerve_controller.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.993s] copying swerve_controller/errors.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.993s] copying swerve_controller/control.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.993s] copying swerve_controller/profile.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.994s] copying swerve_controller/states.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.994s] copying swerve_controller/steering_controller.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.994s] copying swerve_controller/control_profile.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.994s] copying swerve_controller/__init__.py -> /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller
+[0.994s] running install
+[0.998s] running install_lib
+[1.007s] creating /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.007s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/geometry.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.007s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/drive_module.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.007s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/control_model.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/swerve_controller.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/errors.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/control.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/profile.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/states.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/steering_controller.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/control_profile.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] copying /home/zwier/agv_ws/build/swerve_controller/build/lib/swerve_controller/__init__.py -> /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller
+[1.008s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/geometry.py to geometry.cpython-312.pyc
+[1.008s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/drive_module.py to drive_module.cpython-312.pyc
+[1.008s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/control_model.py to control_model.cpython-312.pyc
+[1.009s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/swerve_controller.py to swerve_controller.cpython-312.pyc
+[1.011s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/errors.py to errors.cpython-312.pyc
+[1.011s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/control.py to control.cpython-312.pyc
+[1.011s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/profile.py to profile.cpython-312.pyc
+[1.012s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/states.py to states.cpython-312.pyc
+[1.013s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/steering_controller.py to steering_controller.cpython-312.pyc
+[1.014s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/control_profile.py to control_profile.cpython-312.pyc
+[1.014s] byte-compiling /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller/__init__.py to __init__.cpython-312.pyc
+[1.015s] running install_data
+[1.015s] copying resource/swerve_controller -> /home/zwier/agv_ws/install/swerve_controller/share/ament_index/resource_index/packages
+[1.015s] copying package.xml -> /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller
+[1.015s] copying launch/swerve_controller.launch.py -> /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller/launch
+[1.015s] copying config/swerve.yaml -> /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller/config
+[1.015s] running install_egg_info
+[1.025s] Copying ../../build/swerve_controller/swerve_controller.egg-info to /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve_controller-0.1.0-py3.12.egg-info
+[1.025s] running install_scripts
+[1.098s] Installing swerve_controller script to /home/zwier/agv_ws/install/swerve_controller/lib/swerve_controller
+[1.098s] writing list of installed files to '/home/zwier/agv_ws/build/swerve_controller/install.log'
+[1.112s] Invoked command in '/home/zwier/agv_ws/src/swerve_controller' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/zwier/agv_ws/build/swerve_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/swerve_controller build --build-base /home/zwier/agv_ws/build/swerve_controller/build install --record /home/zwier/agv_ws/build/swerve_controller/install.log --single-version-externally-managed install_data --force

@@ -1,0 +1,26 @@
+[0.008s] Invoking command in '/home/zwier/agv_ws/build/ros2_control_demo_example_11': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/zwier/agv_ws/src/example_11 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/zwier/agv_ws/install/ros2_control_demo_example_11
+[0.113s] -- The CXX compiler identification is GNU 13.3.0
+[0.128s] -- Detecting CXX compiler ABI info
+[0.204s] -- Detecting CXX compiler ABI info - done
+[0.210s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.210s] -- Detecting CXX compile features
+[0.211s] -- Detecting CXX compile features - done
+[0.226s] [31mCMake Error at CMakeLists.txt:4 (find_package):
+[0.226s]   By not providing "Findros2_control_cmake.cmake" in CMAKE_MODULE_PATH this
+[0.226s]   project has asked CMake to find a package configuration file provided by
+[0.226s]   "ros2_control_cmake", but CMake did not find one.
+[0.226s] 
+[0.226s]   Could not find a package configuration file provided by
+[0.226s]   "ros2_control_cmake" with any of the following names:
+[0.226s] 
+[0.226s]     ros2_control_cmakeConfig.cmake
+[0.226s]     ros2_control_cmake-config.cmake
+[0.226s] 
+[0.226s]   Add the installation prefix of "ros2_control_cmake" to CMAKE_PREFIX_PATH or
+[0.226s]   set "ros2_control_cmake_DIR" to a directory containing one of the above
+[0.226s]   files.  If "ros2_control_cmake" provides a separate development package or
+[0.226s]   SDK, be sure it has been installed.
+[0.226s] 
+[0.226s] [0m
+[0.226s] -- Configuring incomplete, errors occurred!
+[0.227s] Invoked command in '/home/zwier/agv_ws/build/ros2_control_demo_example_11' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/zwier/agv_ws/src/example_11 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/zwier/agv_ws/install/ros2_control_demo_example_11

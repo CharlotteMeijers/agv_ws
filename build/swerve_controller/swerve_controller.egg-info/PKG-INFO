@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: swerve-controller
+Version: 0.1.0
+Summary: Defines a four wheel independent steering, aka swerve, controller for the robot.
+Maintainer: petrik
+Maintainer-email: petrikvandervelde@gmail.com
+License: Apache-2.0

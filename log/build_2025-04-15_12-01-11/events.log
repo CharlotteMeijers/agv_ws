@@ -1,0 +1,474 @@
+[0.000000] (-) TimerEvent: {}
+[0.000353] (agv_pkg) JobQueued: {'identifier': 'agv_pkg', 'dependencies': OrderedDict()}
+[0.000397] (swerve_controller) JobQueued: {'identifier': 'swerve_controller', 'dependencies': OrderedDict()}
+[0.000415] (agv_pkg) JobStarted: {'identifier': 'agv_pkg'}
+[0.003823] (swerve_controller) JobStarted: {'identifier': 'swerve_controller'}
+[0.007035] (agv_pkg) JobProgress: {'identifier': 'agv_pkg', 'progress': 'cmake'}
+[0.007748] (agv_pkg) Command: {'cmd': ['/usr/bin/cmake', '/home/zwier/agv_ws/src/agv_pkg', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/zwier/agv_ws/install/agv_pkg'], 'cwd': '/home/zwier/agv_ws/build/agv_pkg', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/home/zwier/agv_ws/src/agv_pkg/worlds/gazebo_models', 'USER': 'zwier', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/zwier', 'OLDPWD': '/home/zwier', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2766', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/zwier/agv_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'zwier', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'zwier', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/zwier-Blade-16-RZ09-0483:@/tmp/.ICE-unix/2722,unix/zwier-Blade-16-RZ09-0483:/tmp/.ICE-unix/2722', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/7958eca5_622a_4c9f_ad54_286e4d9c2d3c', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.113', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/zwier/agv_ws/install/swerve_controller:/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/zwier/agv_ws/build/agv_pkg', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/zwier/agv_ws/build/swerve_controller:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/zwier/agv_ws/install/swerve_controller:/opt/ros/jazzy'}), 'shell': False}
+[0.092162] (agv_pkg) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.100028] (-) TimerEvent: {}
+[0.158073] (agv_pkg) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.172390] (agv_pkg) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.200183] (-) TimerEvent: {}
+[0.240498] (agv_pkg) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.249449] (agv_pkg) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.249853] (agv_pkg) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.250398] (agv_pkg) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.258339] (agv_pkg) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.300312] (-) TimerEvent: {}
+[0.330155] (agv_pkg) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.334999] (agv_pkg) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.335096] (agv_pkg) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.335349] (agv_pkg) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.341956] (agv_pkg) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.400395] (-) TimerEvent: {}
+[0.417895] (swerve_controller) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/zwier/agv_ws/build/swerve_controller/build', '--no-deps', 'symlink_data'], 'cwd': '/home/zwier/agv_ws/build/swerve_controller', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/home/zwier/agv_ws/src/agv_pkg/worlds/gazebo_models', 'USER': 'zwier', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/zwier', 'OLDPWD': '/home/zwier', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2766', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/zwier/agv_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'zwier', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'zwier', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/zwier-Blade-16-RZ09-0483:@/tmp/.ICE-unix/2722,unix/zwier-Blade-16-RZ09-0483:/tmp/.ICE-unix/2722', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/7958eca5_622a_4c9f_ad54_286e4d9c2d3c', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.113', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/zwier/agv_ws/install/swerve_controller:/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/zwier/agv_ws/build/swerve_controller', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/zwier/agv_ws/build/swerve_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:/home/zwier/agv_ws/build/swerve_controller:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[0.440456] (agv_pkg) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.487004] (agv_pkg) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.500612] (-) TimerEvent: {}
+[0.524307] (agv_pkg) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.1 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[0.575603] (swerve_controller) StdoutLine: {'line': b'running develop\n'}
+[0.600788] (-) TimerEvent: {}
+[0.606910] (agv_pkg) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[0.607003] (agv_pkg) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[0.609179] (agv_pkg) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[0.610554] (agv_pkg) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[0.618786] (agv_pkg) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[0.619969] (agv_pkg) StdoutLine: {'line': b'-- Configuring done (0.6s)\n'}
+[0.621354] (agv_pkg) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[0.622016] (agv_pkg) StdoutLine: {'line': b'-- Build files have been written to: /home/zwier/agv_ws/build/agv_pkg\n'}
+[0.624831] (agv_pkg) CommandEnded: {'returncode': 0}
+[0.625093] (agv_pkg) JobProgress: {'identifier': 'agv_pkg', 'progress': 'build'}
+[0.625657] (agv_pkg) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/zwier/agv_ws/build/agv_pkg', '--', '-j32', '-l32'], 'cwd': '/home/zwier/agv_ws/build/agv_pkg', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/home/zwier/agv_ws/src/agv_pkg/worlds/gazebo_models', 'USER': 'zwier', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/zwier', 'OLDPWD': '/home/zwier', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2766', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/zwier/agv_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'zwier', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'zwier', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/zwier-Blade-16-RZ09-0483:@/tmp/.ICE-unix/2722,unix/zwier-Blade-16-RZ09-0483:/tmp/.ICE-unix/2722', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/7958eca5_622a_4c9f_ad54_286e4d9c2d3c', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.113', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/zwier/agv_ws/install/swerve_controller:/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/zwier/agv_ws/build/agv_pkg', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/zwier/agv_ws/build/swerve_controller:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/zwier/agv_ws/install/swerve_controller:/opt/ros/jazzy'}), 'shell': False}
+[0.656968] (agv_pkg) CommandEnded: {'returncode': 0}
+[0.657440] (agv_pkg) JobProgress: {'identifier': 'agv_pkg', 'progress': 'install'}
+[0.664622] (agv_pkg) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/zwier/agv_ws/build/agv_pkg'], 'cwd': '/home/zwier/agv_ws/build/agv_pkg', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/home/zwier/agv_ws/src/agv_pkg/worlds/gazebo_models', 'USER': 'zwier', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/zwier', 'OLDPWD': '/home/zwier', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2766', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/zwier/agv_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'zwier', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'zwier', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/zwier-Blade-16-RZ09-0483:@/tmp/.ICE-unix/2722,unix/zwier-Blade-16-RZ09-0483:/tmp/.ICE-unix/2722', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/7958eca5_622a_4c9f_ad54_286e4d9c2d3c', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.113', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/zwier/agv_ws/install/swerve_controller:/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/zwier/agv_ws/build/agv_pkg', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/zwier/agv_ws/build/swerve_controller:/home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/zwier/agv_ws/install/agv_pkg:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/zwier/agv_ws/install/swerve_controller:/opt/ros/jazzy'}), 'shell': False}
+[0.669222] (swerve_controller) StdoutLine: {'line': b'running egg_info\n'}
+[0.669297] (swerve_controller) StdoutLine: {'line': b'creating swerve_controller.egg-info\n'}
+[0.669808] (agv_pkg) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.669972] (agv_pkg) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.670518] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/gaz_ros2_ctl_use_sim.yaml\n'}
+[0.677144] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/gz_bridge.yaml\n'}
+[0.678384] (swerve_controller) StdoutLine: {'line': b'writing swerve_controller.egg-info/PKG-INFO\n'}
+[0.678576] (swerve_controller) StdoutLine: {'line': b'writing dependency_links to swerve_controller.egg-info/dependency_links.txt\n'}
+[0.678645] (swerve_controller) StdoutLine: {'line': b'writing entry points to swerve_controller.egg-info/entry_points.txt\n'}
+[0.678679] (swerve_controller) StdoutLine: {'line': b'writing requirements to swerve_controller.egg-info/requires.txt\n'}
+[0.678709] (swerve_controller) StdoutLine: {'line': b'writing top-level names to swerve_controller.egg-info/top_level.txt\n'}
+[0.678754] (swerve_controller) StdoutLine: {'line': b"writing manifest file 'swerve_controller.egg-info/SOURCES.txt'\n"}
+[0.682614] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/home_map.pgm\n'}
+[0.687498] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/home_map.yaml\n'}
+[0.693994] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/joystick.yaml\n'}
+[0.697391] (swerve_controller) StdoutLine: {'line': b"reading manifest file 'swerve_controller.egg-info/SOURCES.txt'\n"}
+[0.697603] (swerve_controller) StdoutLine: {'line': b"writing manifest file 'swerve_controller.egg-info/SOURCES.txt'\n"}
+[0.700382] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/localisation_amcl.yaml\n'}
+[0.700879] (-) TimerEvent: {}
+[0.707126] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/locallisation_params_online_async.yaml\n'}
+[0.707567] (swerve_controller) StdoutLine: {'line': b'running build_ext\n'}
+[0.707653] (swerve_controller) StdoutLine: {'line': b'Creating /home/zwier/agv_ws/install/swerve_controller/lib/python3.12/site-packages/swerve-controller.egg-link (link to .)\n'}
+[0.707871] (swerve_controller) StdoutLine: {'line': b'Installing swerve_controller script to /home/zwier/agv_ws/install/swerve_controller/lib/swerve_controller\n'}
+[0.707967] (swerve_controller) StdoutLine: {'line': b'\n'}
+[0.708003] (swerve_controller) StdoutLine: {'line': b'Installed /home/zwier/agv_ws/build/swerve_controller\n'}
+[0.708034] (swerve_controller) StdoutLine: {'line': b'running symlink_data\n'}
+[0.708291] (swerve_controller) StdoutLine: {'line': b'creating /home/zwier/agv_ws/install/swerve_controller/share/ament_index\n'}
+[0.708338] (swerve_controller) StdoutLine: {'line': b'creating /home/zwier/agv_ws/install/swerve_controller/share/ament_index/resource_index\n'}
+[0.708369] (swerve_controller) StdoutLine: {'line': b'creating /home/zwier/agv_ws/install/swerve_controller/share/ament_index/resource_index/packages\n'}
+[0.708399] (swerve_controller) StdoutLine: {'line': b'symbolically linking /home/zwier/agv_ws/build/swerve_controller/resource/swerve_controller -> /home/zwier/agv_ws/install/swerve_controller/share/ament_index/resource_index/packages\n'}
+[0.708427] (swerve_controller) StdoutLine: {'line': b'symbolically linking /home/zwier/agv_ws/build/swerve_controller/package.xml -> /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller\n'}
+[0.708454] (swerve_controller) StdoutLine: {'line': b'creating /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller/launch\n'}
+[0.708481] (swerve_controller) StdoutLine: {'line': b'symbolically linking /home/zwier/agv_ws/build/swerve_controller/launch/swerve_controller.launch.py -> /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller/launch\n'}
+[0.708508] (swerve_controller) StdoutLine: {'line': b'creating /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller/config\n'}
+[0.708534] (swerve_controller) StdoutLine: {'line': b'symbolically linking /home/zwier/agv_ws/build/swerve_controller/config/swerve.yaml -> /home/zwier/agv_ws/install/swerve_controller/share/swerve_controller/config\n'}
+[0.712738] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/map_save.pgm\n'}
+[0.717336] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/map_save.yaml\n'}
+[0.722968] (swerve_controller) CommandEnded: {'returncode': 0}
+[0.723791] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/map_serialize.data\n'}
+[0.730830] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/map_serialize.posegraph\n'}
+[0.731420] (swerve_controller) JobEnded: {'identifier': 'swerve_controller', 'rc': 0}
+[0.736771] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/mapper_params_online_async.yaml\n'}
+[0.743758] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/my_controllers.yaml\n'}
+[0.750303] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/nav2.yaml\n'}
+[0.757610] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/twist_mux.yaml\n'}
+[0.766346] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/view_bot.rviz\n'}
+[0.776277] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/view_bot_in_map.rviz\n'}
+[0.786297] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/view_bot_planning.rviz\n'}
+[0.795570] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/config/zinger.yaml\n'}
+[0.801077] (-) TimerEvent: {}
+[0.801761] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/description/cameras.xacro\n'}
+[0.810688] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/description/gazebo_control.xacro\n'}
+[0.820437] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/description/lidar.xacro\n'}
+[0.830757] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/description/robot.urdf\n'}
+[0.840859] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/description/robot.urdf.xacro\n'}
+[0.850170] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/description/ros2_control.xacro\n'}
+[0.860665] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/joystick.launch.py\n'}
+[0.868714] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/navigation.launch.py\n'}
+[0.878410] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/rsp.launch.py\n'}
+[0.887550] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/sim.launch.py\n'}
+[0.897359] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/slam.launch.py\n'}
+[0.901222] (-) TimerEvent: {}
+[0.907107] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/zinger_loc.launch.py\n'}
+[0.914692] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/zinger_nav.launch.py\n'}
+[0.926174] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/zinger_rsp.launch.py\n'}
+[0.935797] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/launch/zinger_sim.launch.py\n'}
+[0.945278] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/LBW_Link.STL\n'}
+[0.954001] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/LB_Link.STL\n'}
+[0.963000] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/LFW_Link.STL\n'}
+[0.972955] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/LF_Link.STL\n'}
+[0.981686] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/RBW_Link.STL\n'}
+[0.990801] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/RB_Link.STL\n'}
+[1.001039] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/RFW_Link.STL\n'}
+[1.001234] (-) TimerEvent: {}
+[1.010940] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/RF_Link.STL\n'}
+[1.019392] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/meshes/chassis_link.STL\n'}
+[1.032740] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/empty.world\n'}
+[1.043071] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/meshes/Litter.mtl\n'}
+[1.053824] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/meshes/Litter.obj\n'}
+[1.063679] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/meshes/LitterBin_Diffuse.png\n'}
+[1.071130] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/model.config\n'}
+[1.079996] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/model.sdf\n'}
+[1.089271] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/thumbnails/1.png\n'}
+[1.099768] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/thumbnails/2.png\n'}
+[1.101367] (-) TimerEvent: {}
+[1.108836] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/thumbnails/3.png\n'}
+[1.116968] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/thumbnails/4.png\n'}
+[1.126239] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/LitterBin/thumbnails/5.png\n'}
+[1.137353] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/materials/textures/realsense_diffuse.jpg\n'}
+[1.145804] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/materials/textures/spotlight.jpg\n'}
+[1.155808] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/VLP16_base_1.dae\n'}
+[1.165990] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/VLP16_base_2.dae\n'}
+[1.174041] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/VLP16_scan.dae\n'}
+[1.184016] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/base_link.dae\n'}
+[1.195531] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/bumper.dae\n'}
+[1.201538] (-) TimerEvent: {}
+[1.207011] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/jpl04_arch_nosensor.stl\n'}
+[1.217687] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/realsense.dae\n'}
+[1.227315] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/spotlight.dae\n'}
+[1.237448] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/top_chassis.dae\n'}
+[1.247708] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/top_plate.dae\n'}
+[1.258023] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/user_rail.dae\n'}
+[1.267393] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/meshes/wheel.dae\n'}
+[1.278624] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/model.config\n'}
+[1.285927] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/model.sdf\n'}
+[1.295513] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/thumbnails/1.jpg\n'}
+[1.301728] (-) TimerEvent: {}
+[1.302594] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/thumbnails/2.jpg\n'}
+[1.312612] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/thumbnails/3.jpg\n'}
+[1.324082] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/MARBLE_HUSKY_SENSOR_CONFIG_2/thumbnails/4.jpg\n'}
+[1.332733] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/materials/scripts/model.material\n'}
+[1.343896] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/materials/textures/MineCart_Albedo.png\n'}
+[1.355488] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/materials/textures/MineCart_Metalness.png\n'}
+[1.364960] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/materials/textures/MineCart_Roughness.png\n'}
+[1.374815] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/meshes/minecart.dae\n'}
+[1.386484] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/metadata.pbtxt\n'}
+[1.396597] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/model.config\n'}
+[1.401793] (-) TimerEvent: {}
+[1.402209] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/model.sdf\n'}
+[1.412341] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/thumbnails/1.png\n'}
+[1.422270] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/thumbnails/2.png\n'}
+[1.429285] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/thumbnails/3.png\n'}
+[1.435934] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Mine Cart/thumbnails/4.png\n'}
+[1.445308] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/meshes/Clipboard.png\n'}
+[1.454328] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/meshes/Nurse.mtl\n'}
+[1.465045] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/meshes/Nurse.obj\n'}
+[1.474715] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/meshes/NurseFemaleDiffuse.png\n'}
+[1.484094] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/meshes/Nurse_Col.mtl\n'}
+[1.495172] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/meshes/Nurse_Col.obj\n'}
+[1.501963] (-) TimerEvent: {}
+[1.504369] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/model.config\n'}
+[1.513930] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/model.sdf\n'}
+[1.523791] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/thumbnails/1.png\n'}
+[1.529158] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/thumbnails/2.png\n'}
+[1.538699] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/thumbnails/3.png\n'}
+[1.547977] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/thumbnails/4.png\n'}
+[1.558996] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Nurse/thumbnails/5.png\n'}
+[1.565848] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/materials/textures/OfficeChair_Albedo.png\n'}
+[1.577253] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/materials/textures/OfficeChair_Metalness.png\n'}
+[1.586574] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/materials/textures/OfficeChair_Normal.png\n'}
+[1.595309] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/materials/textures/OfficeChair_Roughness.png\n'}
+[1.602140] (-) TimerEvent: {}
+[1.604757] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/meshes/officechair.dae\n'}
+[1.612600] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/model.config\n'}
+[1.620811] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/model.sdf\n'}
+[1.627944] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Office Chair/thumbnails/OfficeChair.png\n'}
+[1.634473] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/RoboCup SPL Ball/model.config\n'}
+[1.639164] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/RoboCup SPL Ball/model.sdf\n'}
+[1.645061] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/RoboCup SPL Ball/thumbnails/1.png\n'}
+[1.656133] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/RoboCup SPL Ball/thumbnails/2.png\n'}
+[1.664416] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/RoboCup SPL Ball/thumbnails/3.png\n'}
+[1.671385] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/RoboCup SPL Ball/thumbnails/4.png\n'}
+[1.678837] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/RoboCup SPL Ball/thumbnails/5.png\n'}
+[1.685467] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/meshes/Sofa.mtl\n'}
+[1.692609] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/meshes/Sofa.obj\n'}
+[1.699388] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/meshes/SofaDiffuse.png\n'}
+[1.702212] (-) TimerEvent: {}
+[1.704667] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/model.config\n'}
+[1.710533] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/model.sdf\n'}
+[1.716611] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/thumbnails/1.png\n'}
+[1.723500] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/thumbnails/2.png\n'}
+[1.730299] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/thumbnails/3.png\n'}
+[1.735600] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/thumbnails/4.png\n'}
+[1.742295] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Sofa/thumbnails/5.png\n'}
+[1.747843] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H.mtl\n'}
+[1.754823] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H.obj\n'}
+[1.759791] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H_Col.mtl\n'}
+[1.766073] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H_Col.obj\n'}
+[1.773098] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H_Diffuse.png\n'}
+[1.778924] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H_Metal.png\n'}
+[1.784476] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H_Normal.png\n'}
+[1.789986] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/meshes/Suitcase1H_Rough.png\n'}
+[1.794739] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/model.config\n'}
+[1.800248] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/model.sdf\n'}
+[1.802277] (-) TimerEvent: {}
+[1.807164] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/thumbnails/1.png\n'}
+[1.812031] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/thumbnails/2.png\n'}
+[1.818266] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/thumbnails/3.png\n'}
+[1.823640] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/thumbnails/4.png\n'}
+[1.829500] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Suitcase1H/thumbnails/5.png\n'}
+[1.836437] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/Table_Diffuse.jpg\n'}
+[1.841828] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/model-1_2.sdf\n'}
+[1.847142] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/model-1_3.sdf\n'}
+[1.853289] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/model-1_4.sdf\n'}
+[1.860324] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/model.config\n'}
+[1.865281] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/model.sdf\n'}
+[1.870717] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/thumbnails/1.png\n'}
+[1.876126] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/thumbnails/2.png\n'}
+[1.881754] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/thumbnails/3.png\n'}
+[1.887138] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/thumbnails/4.png\n'}
+[1.894055] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/Table/thumbnails/5.png\n'}
+[1.898980] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/materials/textures/aws_robomaker_warehouse_ClutteringC_01.png\n'}
+[1.902350] (-) TimerEvent: {}
+[1.905197] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/materials/textures/aws_robomaker_warehouse_ClutteringC_02.png\n'}
+[1.910555] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/meshes/aws_robomaker_warehouse_ClutteringC_01_collision.DAE\n'}
+[1.915675] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/meshes/aws_robomaker_warehouse_ClutteringC_01_visual.DAE\n'}
+[1.920203] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/metadata.pbtxt\n'}
+[1.927934] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/model.config\n'}
+[1.933463] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/model.sdf\n'}
+[1.941428] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/thumbnails/1.png\n'}
+[1.947692] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/thumbnails/2.png\n'}
+[1.952528] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/thumbnails/3.png\n'}
+[1.957154] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/thumbnails/4.png\n'}
+[1.962809] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/aws_robomaker_warehouse_ClutteringC_01/thumbnails/5.png\n'}
+[1.970340] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/materials/scripts/beer.material\n'}
+[1.979876] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/materials/textures/beer.png\n'}
+[1.987583] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/model-1_4.sdf\n'}
+[1.993173] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/model.config\n'}
+[1.998284] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/model.sdf\n'}
+[2.002432] (-) TimerEvent: {}
+[2.007982] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/thumbnails/1.png\n'}
+[2.017629] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/thumbnails/2.png\n'}
+[2.025697] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/thumbnails/3.png\n'}
+[2.034490] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/thumbnails/4.png\n'}
+[2.044424] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/beer/thumbnails/5.png\n'}
+[2.053995] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/materials/scripts/brick_box.material\n'}
+[2.064303] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/materials/textures/simple_box.png\n'}
+[2.072263] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/meshes/simple_box.dae\n'}
+[2.080039] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/model-1_3.sdf\n'}
+[2.089328] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/model-1_4.sdf\n'}
+[2.098723] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/model.config\n'}
+[2.102533] (-) TimerEvent: {}
+[2.110119] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/model.sdf\n'}
+[2.120826] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/thumbnails/1.png\n'}
+[2.130478] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/thumbnails/2.png\n'}
+[2.139670] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/thumbnails/3.png\n'}
+[2.149347] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/thumbnails/4.png\n'}
+[2.157653] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/brick_box_3x1x3/thumbnails/5.png\n'}
+[2.166827] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/materials/textures/Maple.jpg\n'}
+[2.177641] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/materials/textures/Wood_Floor_Dark.jpg\n'}
+[2.187009] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/meshes/Maple.jpg\n'}
+[2.196836] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/meshes/Wood_Floor_Dark.jpg\n'}
+[2.202615] (-) TimerEvent: {}
+[2.207367] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/meshes/cafe_table.dae\n'}
+[2.216071] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/model-1_4.sdf\n'}
+[2.227184] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/model.config\n'}
+[2.237286] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/model.sdf\n'}
+[2.246601] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/thumbnails/1.png\n'}
+[2.256534] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/thumbnails/2.png\n'}
+[2.266331] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/thumbnails/3.png\n'}
+[2.276228] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/thumbnails/4.png\n'}
+[2.286042] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cafe_table/thumbnails/5.png\n'}
+[2.296554] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/materials/textures/cardboard_box.png\n'}
+[2.302702] (-) TimerEvent: {}
+[2.305124] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/meshes/cardboard_box.dae\n'}
+[2.314779] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/meshes/cardboard_box.png\n'}
+[2.325667] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/model.config\n'}
+[2.334289] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/model.sdf\n'}
+[2.342641] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/thumbnails/1.png\n'}
+[2.349323] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/thumbnails/2.png\n'}
+[2.358615] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/thumbnails/3.png\n'}
+[2.367319] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/thumbnails/4.png\n'}
+[2.376775] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/cardboard_box/thumbnails/5.png\n'}
+[2.387768] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/materials/textures/coke_can.png\n'}
+[2.396661] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/meshes/coke_can.dae\n'}
+[2.402863] (-) TimerEvent: {}
+[2.405637] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/model-1_2.sdf\n'}
+[2.416533] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/model-1_3.sdf\n'}
+[2.426154] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/model-1_4.sdf\n'}
+[2.432567] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/model.config\n'}
+[2.442392] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/model.sdf\n'}
+[2.456261] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/thumbnails/1.png\n'}
+[2.464929] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/thumbnails/2.png\n'}
+[2.474655] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/thumbnails/3.png\n'}
+[2.485652] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/thumbnails/4.png\n'}
+[2.494851] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can/thumbnails/5.png\n'}
+[2.503030] (-) TimerEvent: {}
+[2.503649] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can_steel/meshes/coke_can.mtl\n'}
+[2.513692] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can_steel/meshes/coke_can.obj\n'}
+[2.521681] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can_steel/meshes/coke_can.png\n'}
+[2.532233] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can_steel/model.config\n'}
+[2.543594] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can_steel/model.sdf\n'}
+[2.551829] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can_steel/thumbnails/1.png\n'}
+[2.559768] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/coke_can_steel/thumbnails/2.png\n'}
+[2.567886] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/materials/scripts/dumpster.material\n'}
+[2.576537] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/materials/textures/Dumpster_Diffuse.png\n'}
+[2.586378] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/materials/textures/Dumpster_Spec.png\n'}
+[2.597212] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/meshes/dumpster.dae\n'}
+[2.603190] (-) TimerEvent: {}
+[2.605608] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/model-1_3.sdf\n'}
+[2.616347] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/model-1_4.sdf\n'}
+[2.625763] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/model.config\n'}
+[2.635935] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/model.sdf\n'}
+[2.646164] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/thumbnails/1.png\n'}
+[2.655489] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/thumbnails/2.png\n'}
+[2.665293] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/thumbnails/3.png\n'}
+[2.674418] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/thumbnails/4.png\n'}
+[2.684810] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/dumpster/thumbnails/5.png\n'}
+[2.695148] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/materials/textures/fire_hydrant_diffuse.png\n'}
+[2.703280] (-) TimerEvent: {}
+[2.704188] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/materials/textures/fire_hydrant_spec.png\n'}
+[2.713627] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/meshes/fire_hydrant.dae\n'}
+[2.724787] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/meshes/fire_hydrant_diffuse.png\n'}
+[2.733448] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/meshes/fire_hydrant_spec.png\n'}
+[2.743104] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/model-1_4.sdf\n'}
+[2.751572] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/model.config\n'}
+[2.761406] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/model.sdf\n'}
+[2.770437] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/thumbnails/1.png\n'}
+[2.782034] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/thumbnails/2.png\n'}
+[2.791737] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/thumbnails/3.png\n'}
+[2.800929] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/thumbnails/4.png\n'}
+[2.803368] (-) TimerEvent: {}
+[2.812326] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/fire_hydrant/thumbnails/5.png\n'}
+[2.821185] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/meshes/trash_can.dae\n'}
+[2.831228] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/model.config\n'}
+[2.839513] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/model.sdf\n'}
+[2.849250] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/thumbnails/1.png\n'}
+[2.860653] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/thumbnails/2.png\n'}
+[2.870170] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/thumbnails/3.png\n'}
+[2.879911] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/thumbnails/4.png\n'}
+[2.891183] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/first_2015_trash_can/thumbnails/5.png\n'}
+[2.899853] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/materials/scripts/mailbox.material\n'}
+[2.903462] (-) TimerEvent: {}
+[2.909759] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/materials/textures/Mailbox_Diffuse.png\n'}
+[2.920272] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/materials/textures/Mailbox_Diffuse.tga.orig\n'}
+[2.928925] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/materials/textures/Mailbox_Spec.png\n'}
+[2.936200] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/meshes/Mailbox_Diffuse.png\n'}
+[2.945219] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/meshes/Mailbox_Spec.png\n'}
+[2.954472] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/meshes/mailbox.dae\n'}
+[2.963468] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/model-1_3.sdf\n'}
+[2.972695] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/model-1_4.sdf\n'}
+[2.981399] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/model.config\n'}
+[2.990963] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/model.sdf\n'}
+[3.000037] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/thumbnails/1.png\n'}
+[3.003566] (-) TimerEvent: {}
+[3.008992] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/thumbnails/2.png\n'}
+[3.020383] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/thumbnails/3.png\n'}
+[3.027253] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/thumbnails/4.png\n'}
+[3.035326] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/mailbox/thumbnails/5.png\n'}
+[3.045296] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/materials/textures/plywood256x256.png\n'}
+[3.051957] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/meshes/nist_maze_wall_120.dae\n'}
+[3.057047] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/model-1_2.sdf\n'}
+[3.064315] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/model-1_3.sdf\n'}
+[3.071177] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/model-1_4.sdf\n'}
+[3.081620] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/model.config\n'}
+[3.088398] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/model.sdf\n'}
+[3.099672] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/thumbnails/1.png\n'}
+[3.103724] (-) TimerEvent: {}
+[3.107704] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/thumbnails/2.png\n'}
+[3.116683] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/thumbnails/3.png\n'}
+[3.121284] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/thumbnails/4.png\n'}
+[3.130572] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/nist_maze_wall_120/thumbnails/5.png\n'}
+[3.139709] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/eyebrow001-unmodified.png\n'}
+[3.149075] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/eyebrow001.png\n'}
+[3.160510] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/green_eye.png\n'}
+[3.169973] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/jeans01_normals.png\n'}
+[3.179772] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/jeans_basic_diffuse.png\n'}
+[3.186244] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/male02_diffuse_black-unmodified.png\n'}
+[3.193628] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/male02_diffuse_black.png\n'}
+[3.197786] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/teeth.png\n'}
+[3.203893] (-) TimerEvent: {}
+[3.205886] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/tshirt02_normals.png\n'}
+[3.214071] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/tshirt02_texture.png\n'}
+[3.220100] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/materials/textures/young_lightskinned_male_diffuse.png\n'}
+[3.228738] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/meshes/standing.dae\n'}
+[3.234660] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/model.config\n'}
+[3.242730] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/model.sdf\n'}
+[3.248816] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/thumbnails/1.png\n'}
+[3.255428] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/thumbnails/2.png\n'}
+[3.262242] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/thumbnails/3.png\n'}
+[3.271224] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/thumbnails/4.png\n'}
+[3.281422] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/person_standing/thumbnails/5.png\n'}
+[3.292753] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/red_ball_10in/model.config\n'}
+[3.301695] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/red_ball_10in/model.sdf\n'}
+[3.304073] (-) TimerEvent: {}
+[3.312638] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/red_ball_10in/thumbnails/1.png\n'}
+[3.321763] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/materials/scripts/rescue_randy.material\n'}
+[3.330475] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/materials/textures/RescueRandy_Thermal.png\n'}
+[3.339983] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/materials/textures/rescue_randy_albedo.png\n'}
+[3.348500] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/materials/textures/rescue_randy_metalness.png\n'}
+[3.358668] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/materials/textures/rescue_randy_normal.png\n'}
+[3.366800] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/materials/textures/rescue_randy_roughness.png\n'}
+[3.376247] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/meshes/rescue_randy.dae\n'}
+[3.385868] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/model.config\n'}
+[3.394828] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/model.sdf\n'}
+[3.403426] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/thumbnails/1.png\n'}
+[3.404198] (-) TimerEvent: {}
+[3.413212] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/thumbnails/2.png\n'}
+[3.422470] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/thumbnails/3.png\n'}
+[3.431652] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/thumbnails/4.png\n'}
+[3.443216] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/rescue_randy/thumbnails/5.png\n'}
+[3.454616] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/materials/scripts/table_lightmap.material\n'}
+[3.463394] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/materials/textures/marble.png\n'}
+[3.473610] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/materials/textures/table_lightmap.png\n'}
+[3.482725] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/meshes/marble.png\n'}
+[3.492076] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/meshes/table_lightmap.dae\n'}
+[3.500553] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/meshes/table_lightmap.png\n'}
+[3.504282] (-) TimerEvent: {}
+[3.510800] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/model-1_4.sdf\n'}
+[3.520504] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/model.config\n'}
+[3.529707] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/model.sdf\n'}
+[3.538729] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/thumbnails/1.png\n'}
+[3.547534] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/thumbnails/2.png\n'}
+[3.558579] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/thumbnails/3.png\n'}
+[3.567736] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/thumbnails/4.png\n'}
+[3.577895] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/gazebo_models/table_marble/thumbnails/5.png\n'}
+[3.585876] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/home.sdf\n'}
+[3.595078] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/worlds/obstacles.world\n'}
+[3.604365] (-) TimerEvent: {}
+[3.604994] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/base.xacro\n'}
+[3.616868] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/cameras.xacro\n'}
+[3.625939] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/gazebo.xacro\n'}
+[3.636817] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/lidar.xacro\n'}
+[3.646765] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/macros.xacro\n'}
+[3.655651] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/map_save.pgm\n'}
+[3.664351] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/map_save.yaml\n'}
+[3.674750] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/map_serialize.data\n'}
+[3.685258] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/map_serialize.posegraph\n'}
+[3.695333] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/urdf/materials.xacro\n'}
+[3.704426] (-) TimerEvent: {}
+[3.704696] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/ament_index/resource_index/package_run_dependencies/agv_pkg\n'}
+[3.712674] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/ament_index/resource_index/parent_prefix_path/agv_pkg\n'}
+[3.722419] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/environment/ament_prefix_path.sh\n'}
+[3.731783] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/environment/ament_prefix_path.dsv\n'}
+[3.741153] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/environment/path.sh\n'}
+[3.750824] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/environment/path.dsv\n'}
+[3.758176] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/local_setup.bash\n'}
+[3.767010] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/local_setup.sh\n'}
+[3.778516] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/local_setup.zsh\n'}
+[3.789623] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/local_setup.dsv\n'}
+[3.799350] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/package.dsv\n'}
+[3.804618] (-) TimerEvent: {}
+[3.807833] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/ament_index/resource_index/packages/agv_pkg\n'}
+[3.818674] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/cmake/agv_pkgConfig.cmake\n'}
+[3.828207] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/cmake/agv_pkgConfig-version.cmake\n'}
+[3.833025] (agv_pkg) StdoutLine: {'line': b'-- Symlinking: /home/zwier/agv_ws/install/agv_pkg/share/agv_pkg/package.xml\n'}
+[3.844904] (agv_pkg) CommandEnded: {'returncode': 0}
+[3.857703] (agv_pkg) JobEnded: {'identifier': 'agv_pkg', 'rc': 0}
+[3.858999] (-) EventReactorShutdown: {}

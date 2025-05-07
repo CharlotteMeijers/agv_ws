@@ -1,0 +1,4 @@
+[31mCMake Error at CMakeLists.txt:5 (set_compiler_options):
+  Unknown CMake command "set_compiler_options".
+
+[0m
