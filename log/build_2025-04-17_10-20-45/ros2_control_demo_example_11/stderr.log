@@ -1,4 +1,0 @@
-[31mCMake Error at CMakeLists.txt:5 (export_windows_symbols):
-  Unknown CMake command "export_windows_symbols".
-
-[0m

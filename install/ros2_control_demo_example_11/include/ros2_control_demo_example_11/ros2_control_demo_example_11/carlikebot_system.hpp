@@ -1,1 +1,0 @@
-/home/zwier/agv_ws/src/example_11/hardware/include/ros2_control_demo_example_11/carlikebot_system.hpp

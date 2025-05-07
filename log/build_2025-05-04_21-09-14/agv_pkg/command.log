@@ -1,4 +1,0 @@
-Invoking command in '/home/zwier/agv_ws/build/agv_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/zwier/agv_ws/build/agv_pkg -- -j32 -l32
-Invoked command in '/home/zwier/agv_ws/build/agv_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/zwier/agv_ws/build/agv_pkg -- -j32 -l32
-Invoking command in '/home/zwier/agv_ws/build/agv_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/zwier/agv_ws/build/agv_pkg
-Invoked command in '/home/zwier/agv_ws/build/agv_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/zwier/agv_ws/build/agv_pkg
