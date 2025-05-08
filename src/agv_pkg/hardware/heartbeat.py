@@ -9,7 +9,7 @@ HEARTBEAT_DATA = [255] * 8
 
 class HeartbeatNode(LifecycleNode):
   def __init__(self):
-    super().__init__("Heartbeat_node")
+    super().__init__("heartbeat_node")
     self.get_logger().info("IN constructor")
     self.timer_ = None
     self.bus = None
@@ -17,7 +17,7 @@ class HeartbeatNode(LifecycleNode):
   def on_configure(self, state: LifecycleState):
     self.get_logger().info("IN on_configure")
 
-    self.bus = can.interface.Bus(interface='socketcan', channel='vcan0', bitrate=1000000)
+    self.bus = can.interface.Bus(interface='socketcan', channel='can0', bitrate=1000000)
 
     self.timer_ = self.create_timer(0.2, self.send_heartbeat_frame) 
     self.timer_.cancel() #Don't start yet
