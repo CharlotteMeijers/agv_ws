@@ -83,29 +83,14 @@ class MotorControlNode(LifecycleNode):
       self.get_logger().info(f'Received steer commands: {msg.data}')
       for i, value in enumerate(msg.data):
         if i < len(steer_ids):
-          target_angle = float(value)
-          motor_id = steer_ids[i]
-          self.get_logger().info(f"Setting steering motor {motor_id} to desired angle: {target_angle}")
+          self.get_logger().info(f"Setting steering motor {steer_ids[i]} to desired position: {float(value)}")
 
-          while not self.has_reached_position(motor_id, target_angle):
-            self.send_control_frame(motor_id, position_mode, target_angle)
-            self.read_steering_motor_position()
-            rclpy.spin_once(self, timeout_sec=0.01)  # Little break
-            self.get_logger().info(f"Steering motor {motor_id} reached position {target_angle}")
-
-
-  # def steer_callback(self, msg: Float64MultiArray):
-  #   if self.active:
-  #     self.get_logger().info(f'Received steer commands: {msg.data}')
-  #     for i, value in enumerate(msg.data):
-  #       if i < len(steer_ids):
-  #         target_angle = float(value)
-  #         self.get_logger().info(f"Setting steering motor {steer_ids[i]} to desired position: {target_angle}")
-
-  #           while not self.has_reached_position(steer_ids[i], target_angle):
-  #             self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.1)
-  #             rclpy.spin_once(self) 
-  #             self.get_logger().info(f"Steering motor {steer_ids[i]} reached desired position: {target_angle}")
+            while not self.has_reached_position(self.encoder_angles[i], float(value)):
+              self.send_control_frame(steer_ids[i], duty_cycle_mode, float(value))
+              self.get_logger().info(f"Steering motor {steer_ids[i]} reached desired position: {float(value)}")
+              self.read_steering_motor_position()
+              rclpy.spin_once(self, timeout_sec=0.01)
+            self.get_logger().info(f"Steering motor {i} reached desired position: {float(value)}")
 
   def send_control_frame(self, device_id: int, control_mode: int, setpoint: float):
     can_id = control_mode + device_id 
@@ -122,15 +107,14 @@ class MotorControlNode(LifecycleNode):
   def read_steering_motor_position(self):
     try:
       msg = self.bus.recv()  
-      for i, value in enumerate(steer_ids):
-        if msg.arbitration_id == value:
-          self.encoder_angles[i] = sturct.unpack('f', bytes(msg.data[:4]))[0]
+      for i, steer_id in enumerate(steer_ids):
+        if msg.arbitration_id == steer_id:
+          self.encoder_angles[i] = struct.unpack('f', bytes(msg.data[:4]))[0]
           self.get_logger().info(f"Steering motor {i} position: {self.encoder_angles[i]}")
-        except can.CanError as e:
+    except can.CanError as e:
           self.get_logger().error(f"CAN Error: {e}")
 
-  def has_reached_position(self, motor_id: int, target_angle: float) -> bool:
-    current_position = self.encoder_angles.get(motor_id, 0.0)
+  def has_reached_position(self, current_position: float, target_angle: float) -> bool:
     tolerance = 0.1  
         
     if abs(current_position - target_angle) <= tolerance:
