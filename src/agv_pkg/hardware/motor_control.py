@@ -24,7 +24,7 @@ class MotorControlNode(LifecycleNode):
 
     self.bus = can.interface.Bus(interface='socketcan', channel='vcan0', bitrate=1000000)
 
-    self.drive_sub = self.create_subscription(Float64MultiArray, '/drive_module_drive_angle_controller/commands', self.drive_callback, 10)
+    self.drive_sub = self.create_subscription(Float64MultiArray, '/drive_module_velocity_controller/commands', self.drive_callback, 10)
     self.steer_sub = self.create_subscription(Float64MultiArray, '/drive_module_steer_angle_controller/commands', self.steer_callback, 10)
 
     return TransitionCallbackReturn.SUCCESS
@@ -52,7 +52,7 @@ class MotorControlNode(LifecycleNode):
     return TransitionCallbackReturn.SUCCESS
 
   def drive_callback(self, msg: Float64MultiArray):
-    self.get_logger().info(f'Received drive commands: {msg.data}')
+    self.get_logger().info(f'Received velocity commands: {msg.data}')
     for i, value in enumerate(msg.data):
       if i < len(drive_ids):
         self.send_control_frame(drive_ids[i], duty_cycle_mode, float(value))    
@@ -77,11 +77,11 @@ class MotorControlNode(LifecycleNode):
         self.get_logger().info("Heartbeat could not be send")
 
 
-  def main(args=None):
-    rclpy.init(args=args)
-    lifecycle_node = MotorControlNode()
-    rclpy.spin(lifecycle_node)
-    rclpy.shutdown()
+def main(args=None):
+  rclpy.init(args=args)
+  lifecycle_node = MotorControlNode()
+  rclpy.spin(lifecycle_node)
+  rclpy.shutdown()
 
 if __name__ == "__main__":
   main()

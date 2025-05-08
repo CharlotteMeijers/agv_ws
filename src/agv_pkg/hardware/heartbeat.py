@@ -58,11 +58,11 @@ class HeartbeatNode(LifecycleNode):
         self.get_logger().info("Heartbeat could not be send")
 
 
-  def main(args=None):
-    rclpy.init(args=args)
-    lifecycle_node = HeartbeatNode()
-    rclpy.spin(lifecycle_node)
-    rclpy.shutdown()
+def main(args=None):
+  rclpy.init(args=args)
+  lifecycle_node = HeartbeatNode()
+  rclpy.spin(lifecycle_node)
+  rclpy.shutdown()
 
 if __name__ == "__main__":
   main()
