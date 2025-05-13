@@ -12,6 +12,7 @@ position_mode = 0x2050C80
 
 drive_ids = [1, 21, 31, 41]
 steer_ids = [2, 22, 32, 42]
+encoder_reset = [0.0, 0.0, 0.0, 0.0]
 
 
 class MotorControlNode(LifecycleNode):
@@ -22,7 +23,7 @@ class MotorControlNode(LifecycleNode):
     self.drive_sub = None
     self.steer_sub = None
     self.active = False
-    self.encoder_angles = {i: 0.0 for i in steer_ids}
+    self.encoder_angles = encoder_reset
 
   def on_configure(self, state: LifecycleState):
     self.get_logger().info("IN on_configure")
@@ -55,6 +56,7 @@ class MotorControlNode(LifecycleNode):
   def on_activate(self, state: LifecycleState):
     self.get_logger().info("IN on_activate")
     self.active = True
+    # self.read_steering_messages() 
     return super().on_activate(state)
 
   def on_deactivate(self, state: LifecycleState):
@@ -85,11 +87,9 @@ class MotorControlNode(LifecycleNode):
         if i < len(steer_ids):
           self.get_logger().info(f"Setting steering motor {steer_ids[i]} to desired position: {float(value)}")
 
-          while not self.has_reached_position(self.encoder_angles[i], float(value)):
-            self.send_control_frame(steer_ids[i], duty_cycle_mode, float(value))
-            self.get_logger().info(f"Steering motor {steer_ids[i]} reached desired position: {float(value)}")
-            self.read_steering_motor_position()
-            rclpy.spin_once(self, timeout_sec=0.01)
+          while not self.has_reached_position(self.read_steering_messages(steer_ids[i]), float(value)):
+            self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.1)
+            rclpy.spin_once(self, timeout_sec=0.1)
           self.get_logger().info(f"Steering motor {i} reached desired position: {float(value)}")
 
   def send_control_frame(self, device_id: int, control_mode: int, setpoint: float):
@@ -104,15 +104,52 @@ class MotorControlNode(LifecycleNode):
     except can.CanError:
         self.get_logger().info("Motor control frame could not be send")
 
-  def read_steering_motor_position(self):
-    try:
-      msg = self.bus.recv()  
-      for i, steer_id in enumerate(steer_ids):
-        if msg.arbitration_id == steer_id:
-          self.encoder_angles[i] = struct.unpack('f', bytes(msg.data[:4]))[0]
-          self.get_logger().info(f"Steering motor {i} position: {self.encoder_angles[i]}")
-    except can.CanError as e:
-          self.get_logger().error(f"CAN Error: {e}")
+  def read_steering_messages(self, motor_id: int):
+    while True: # Make sure it keeps reading till it finds a message that fits the requirements
+      msg = self.bus.recv()
+      if msg is None:
+        continue
+        
+      can_id = msg.arbitration_id
+
+      device_id = can_id & 0x3F
+      api_index = (can_id & 0x3C0) >> 6
+      api_class = (can_id & 0x1C00) >> 10
+      manufacturer = (can_id & 0xFF0000) >> 16
+      device_type = (can_id & 0x1F000000) >> 24
+
+      self.get_logger().info(f"[CAN ID] Device ID: {device_id}, API Class: {api_class}, API Index: {api_index}, Manufacturer: {manufacturer}, Device Type: {device_type}")
+      
+      if device_id == motor_id and api_class == 6 and api_index == 2 :
+        steering_ratio = 9424 / 203
+
+        #Convert bytes to float based on little-endian (lowest byte first)
+        raw_rpm = struct.unpack('<f', msg.data[0:4])[0]
+        raw_position = struct.unpack('<f', msg.data[4:8])[0] 
+
+        rpm = (raw_rpm / steering_ratio) 
+        turning_angle = rpm / 60 * 360 # In degrees per seconds
+        accumulated_angle = raw_position/steering_ratio *360 #in degrees
+
+        angle_degrees = accumulated_angle % 360 # Remove full rounds
+        if angle_degrees < 0:
+            angle_degrees += 360
+        norm_angle = angle_degrees / 360 # The normalised angle 
+
+
+        self.get_logger().info(f"Raw position: {raw_position}, rpm: {rpm}, turning angle per second {turning_angle}, accumalted angle {accumulated_angle}, normalised angle {norm_angle}")
+        return norm_angle
+
+
+  # def read_steering_motor_position(self):
+  #   try:
+  #     msg = self.bus.recv()  
+  #     for i, steer_id in enumerate(steer_ids):
+  #       if msg.arbitration_id == steer_id:
+  #         self.encoder_angles[i] = struct.unpack('f', bytes(msg.data[:4]))[0]
+  #         self.get_logger().info(f"Steering motor {i} position: {self.encoder_angles[i]}")
+  #   except can.CanError as e:
+  #         self.get_logger().error(f"CAN Error: {e}")
 
   def has_reached_position(self, current_position: float, target_angle: float) -> bool:
     tolerance = 0.1  
