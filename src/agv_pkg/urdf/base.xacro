@@ -6,7 +6,7 @@
     <xacro:property name="PI" value="3.1415926535897931"/>
 
     <!-- ARGUMENTS -->
-    <xacro:arg name="is_simulation" default="true" />
+    <xacro:arg name="is_simulation" default="false" />
     <xacro:arg name="use_fake_hardware" default="true" />
     <xacro:arg name="fake_sensor_commands" default="false" />
     <xacro:arg name="chassis_version" default="v1" />
@@ -203,28 +203,21 @@
         y_reflect="${right_y_reflect}" />
 
     <ros2_control name="ZingerJointControl" type="system">
-        <xacro:if value="$(arg is_simulation)">
-            <hardware>
-                <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-            </hardware>
-        </xacro:if>
-        <xacro:unless value="$(arg is_simulation)">
-            <xacro:if value="$(arg use_fake_hardware)">
-                <hardware>
-                    <plugin>mock_components/GenericSystem</plugin>
-                </hardware>
-            </xacro:if>
-            <xacro:unless value="$(arg use_fake_hardware)">
-                <!-- USE REAL HARDWARE HERE -->
-                <hardware>
-                </hardware>
-            </xacro:unless>
-        </xacro:unless>
-        <xacro:steering_module_controller name="left_front" />
-        <xacro:steering_module_controller name="left_rear" />
-        <xacro:steering_module_controller name="right_rear" />
-        <xacro:steering_module_controller name="right_front" />
+    <!-- <xacro:if value="$(arg is_simulation)">
+        <hardware>
+        <plugin>mock_components/GenericSystem</plugin>
+        </hardware>
+    </xacro:if> -->
+
+    <hardware>
+        <plugin>mock_components/GenericSystem</plugin>
+    </hardware>
+    <xacro:steering_module_controller name="left_front" />
+    <xacro:steering_module_controller name="left_rear" />
+    <xacro:steering_module_controller name="right_rear" />
+    <xacro:steering_module_controller name="right_front" />
     </ros2_control>
+
 
     <!-- Sensors -->
 
