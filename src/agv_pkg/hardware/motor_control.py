@@ -33,7 +33,7 @@ class MotorControlNode(LifecycleNode):
     self.bus = can.interface.Bus(interface='socketcan', channel='can0', bitrate=1000000)
 
     self.drive_sub = self.create_subscription(Float64MultiArray, '/drive_module_velocity_controller/commands', self.drive_callback, 10)
-    self.steer_sub = self.create_subscription(Float64MultiArray, '/drive_module_steer_angle_controller/commands', self.steer_callback, 10)
+    self.steer_sub = self.create_subscription(Float64MultiArray, '/drive_module_steering_angle_controller/commands', self.steer_callback, 10)
     self.active = False
 
     try:
