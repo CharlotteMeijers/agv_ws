@@ -15,6 +15,7 @@ For navigation:
 
 For the real hardware:
  - ros-jazzy-ros2-socketcan
+ - libudev-dev
 
 # Run commands
 ## Robot description
@@ -101,3 +102,22 @@ To be able to use the home.sdf, add the following to the ~/.bashrc
         export GZ_SIM_RESOURCE_PATH=~/agv_ws/src/agv_pkg/worlds/gazebo_models
 
 Don't forget to source the ~/.bashrc before running again
+
+# Hardware
+ros2 topic pub /drive_module_velocity_controller/commands std_msgs/msg/Float64MultiArray "{layout=std_msgs.msg.MultiArrayLayout(dim=[],data_offset=0), data=[0.0, 0.0, 0.0, 0.0]}"
+ros2 topic pub /drive_module_steer_angle_controller/commands std_msgs/msg/Float64MultiArray "{layout=std_msgs.msg.MultiArrayLayout(dim=[],data_offset=0), data=[0.0, 0.0, 0.0, 0.0]}"
+
+python3 heartbeat.py
+python3 control_motor.py
+ros2 launch ldlidar_node ldlidar_bringup.launch.py 
+
+ros2 lifecycle set /heartbeat_node configure
+ros2 lifecycle set /heartbeat_node activate
+ros2 lifecycle set /motor_control_node configure
+ros2 lifecycle set /heartbeat_node activate
+ros2 lifecycle set /ldlidar_node configure
+ros2 lifecycle set /ldlidar_node activate
+
+
+
+~/agv_ws/src/ldrobot-lidar-ros2/scripts$ ./create_udev_rules.sh
