@@ -42,6 +42,7 @@
 
     <xacro:if value="$(arg is_simulation)">
     <xacro:include filename="$(find agv_pkg)/urdf/gazebo.xacro" />
+    <xacro:include filename="$(find agv_pkg)/description/ros2_control.xacro" />
     </xacro:if>
 
     <!-- MODEL -->
@@ -208,6 +209,30 @@
         <plugin>mock_components/GenericSystem</plugin>
         </hardware>
     </xacro:if> -->
+
+    <xacro:if value="$(arg is_simulation)">
+        <hardware>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </hardware>
+    </xacro:if>
+
+
+    <!-- <xacro:unless value="$(arg is_simulation)">
+        <xacro:if value="$(arg use_fake_hardware)">
+            <hardware>
+                <plugin>mock_components/GenericSystem</plugin>
+            </hardware>
+        </xacro:if>
+        <xacro:unless value="$(arg use_fake_hardware)">
+            <hardware>
+            </hardware>
+        </xacro:unless>
+    </xacro:unless>
+
+    <xacro:steering_module_controller name="left_front" />
+    <xacro:steering_module_controller name="left_rear" />
+    <xacro:steering_module_controller name="right_rear" />
+    <xacro:steering_module_controller name="right_front" /> -->
 
     <hardware>
         <plugin>mock_components/GenericSystem</plugin>

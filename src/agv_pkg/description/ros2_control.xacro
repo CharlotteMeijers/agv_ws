@@ -34,7 +34,7 @@
         </ros2_control>
     </xacro:unless> -->
 
-    <xacro:if value="$(arg sim_mode)">
+    <xacro:if value="$(arg is_simulation)">
         <ros2_control name="GazeboSystem" type="system">
             <hardware>
                 <plugin>gz_ros2_control/GazeboSimSystem</plugin>
