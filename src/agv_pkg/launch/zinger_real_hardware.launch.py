@@ -3,10 +3,13 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
-from launch.substitutions import LaunchConfiguration, Command
-from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, GroupAction, TimerAction
+from launch.substitutions import LaunchConfiguration, Command, PythonExpression
+from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, GroupAction, TimerAction, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_ros.actions import Node
+from launch_ros.actions import Node, LoadComposableNodes
+from launch_ros.descriptions import ComposableNode
+from launch.conditions import IfCondition
+from nav2_common.launch import RewrittenYaml
 
 import xacro
 ARGUMENTS = [
@@ -22,8 +25,20 @@ def generate_launch_description():
     package_name='agv_pkg' 
 
     use_sim_time = LaunchConfiguration('use_sim_time')
+    autostart = LaunchConfiguration('autostart')
+    use_composition = LaunchConfiguration('use_composition')
+    use_respawn = LaunchConfiguration('use_respawn')
+    log_level = LaunchConfiguration('log_level')
+    namespace = LaunchConfiguration('namespace')
+    container_name = LaunchConfiguration('container_name')
+    container_name_full = (namespace, '/', container_name)    
     # use_ros2_control = LaunchConfiguration('use_ros2_control')
 
+    lifecycle_nodes = ['ldlidar_node',
+                       'heartbeat_node',
+                       'motor_control_node'
+    ]
+    
     ld = LaunchDescription(ARGUMENTS)
 
     # Publish robot description topic
@@ -100,27 +115,83 @@ def generate_launch_description():
                     )
     ld.add_action(swerve_controller)
 
-    lidar =  Node(
-        package="ldlidar_node",
-        executable="ldlidar_bringup.launch.py",
-    )
-    ld.add_action(lidar)
+    # Declare parameters
+    declare_autostart_cmd = DeclareLaunchArgument(
+        'autostart', default_value='true',
+        description='Automatically startup the nav2 stack')
+    
+    declare_namespace_cmd = DeclareLaunchArgument(
+        'namespace',
+        default_value='',
+        description='Top-level namespace')
 
-    heartbeat_node = Node(
-        package='agv_pkg',
-        executable='heartbeat',  
-        name='heartbeat',
-        output='screen'
-    )
-    ld.add_action(heartbeat_node)
+    declare_use_composition_cmd = DeclareLaunchArgument(
+        'use_composition', default_value='False',
+        description='Use composed bringup if True')
 
-    motor_control_node = Node(
-        package='agv_pkg',
-        executable='motor_control',  
-        name='motor_control',
-        output='screen'
+    declare_container_name_cmd = DeclareLaunchArgument(
+        'container_name', default_value='nav2_container',
+        description='the name of conatiner that nodes will load in if use composition')
+
+    declare_use_respawn_cmd = DeclareLaunchArgument(
+        'use_respawn', default_value='False',
+        description='Whether to respawn if a node crashes. Applied when composition is disabled.')
+
+    declare_log_level_cmd = DeclareLaunchArgument(
+        'log_level', default_value='info',
+        description='log level')
+    
+
+    # Lifecycle manager configuration file
+    lc_mgr_config_path = os.path.join(
+        get_package_share_directory('ldlidar_node'),
+        'params',
+        'lifecycle_mgr.yaml'
     )
-    ld.add_action(motor_control_node)
+
+    load_nodes = GroupAction(
+        condition=IfCondition(PythonExpression(['not ', use_composition])),
+        actions=[
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                get_package_share_directory('ldlidar_node'),
+                'launch',
+                'ldlidar_bringup.launch.py'
+                )]),
+            launch_arguments={'use_sim_time': use_sim_time}.items()
+),
+
+            Node(
+                package='agv_pkg',
+                executable='heartbeat',
+                name='heartbeat_node'
+            ),
+            Node(
+                package='agv_pkg',
+                executable='motor_control',
+                name='motor_control_node',
+                ),
+            Node(
+                package='nav2_lifecycle_manager',
+                executable='lifecycle_manager',
+                name='lifecycle_manager_navigation',
+                output='screen',
+                arguments=['--ros-args', '--log-level', log_level],
+                parameters=[{'use_sim_time': use_sim_time},
+                            {'autostart': autostart},
+                            {'node_names': lifecycle_nodes}]),
+        ]
+    )
+
+    # Declare the launch options
+    ld.add_action(declare_namespace_cmd)
+    ld.add_action(declare_autostart_cmd)
+    ld.add_action(declare_use_composition_cmd)
+    ld.add_action(declare_container_name_cmd)
+    ld.add_action(declare_use_respawn_cmd)
+    ld.add_action(declare_log_level_cmd)
+    ld.add_action(load_nodes)
+
 
     return ld
 
