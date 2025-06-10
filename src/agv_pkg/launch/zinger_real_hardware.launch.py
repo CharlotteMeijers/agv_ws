@@ -22,7 +22,7 @@ def generate_launch_description():
     package_name='agv_pkg' 
 
     use_sim_time = LaunchConfiguration('use_sim_time')
-    use_ros2_control = LaunchConfiguration('use_ros2_control')
+    # use_ros2_control = LaunchConfiguration('use_ros2_control')
 
     ld = LaunchDescription(ARGUMENTS)
 
@@ -100,21 +100,27 @@ def generate_launch_description():
                     )
     ld.add_action(swerve_controller)
 
-    # heartbeat_node = Node(
-    #     package='agv_pkg',
-    #     executable='heartbeat',  
-    #     name='heartbeat',
-    #     output='screen'
-    # )
-    # ld.add_action(heartbeat_node)
+    lidar =  Node(
+        package="ldlidar_node",
+        executable="ldlidar_bringup.launch.py",
+    )
+    ld.add_action(lidar)
 
-    # motor_control_node = Node(
-    #     package='agv_pkg',
-    #     executable='motor_control',  
-    #     name='motor_control',
-    #     output='screen'
-    # )
-    # ld.add_action(motor_control_node)
+    heartbeat_node = Node(
+        package='agv_pkg',
+        executable='heartbeat',  
+        name='heartbeat',
+        output='screen'
+    )
+    ld.add_action(heartbeat_node)
+
+    motor_control_node = Node(
+        package='agv_pkg',
+        executable='motor_control',  
+        name='motor_control',
+        output='screen'
+    )
+    ld.add_action(motor_control_node)
 
     return ld
 
