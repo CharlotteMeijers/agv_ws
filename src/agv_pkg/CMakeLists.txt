@@ -24,8 +24,15 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  DIRECTORY config description launch meshes worlds urdf
+  DIRECTORY config description launch meshes worlds urdf hardware
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(
+  PROGRAMS
+    hardware/heartbeat.py
+    hardware/motor_control.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_package()

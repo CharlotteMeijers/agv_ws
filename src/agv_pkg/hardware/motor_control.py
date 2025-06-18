@@ -11,6 +11,7 @@ import math
 from sensor_msgs.msg import JointState
 import time
 from rclpy.qos import QoSProfile, DurabilityPolicy, ReliabilityPolicy
+import threading
 
 duty_cycle_mode = 0x2050080
 position_mode = 0x2050C80
@@ -47,10 +48,16 @@ class MotorControlNode(LifecycleNode):
     self.diff = [0.0] * len(steer_ids)
     self.steering_target = [None] * len(steer_ids) #Variable to store the target position for the steering motors
     self.last_steer_msg_time = time.time()  #Variable to save the last steering callback time
-    
+    self.can_thread = threading.Thread(target=self.read_can_loop, daemon=True)
+    self.can_thread.start()
+
     self.create_timer(0.1, self.check_steer)
     self.create_timer(0.1, self.check_diff)
-    self.create_timer(0.001, self.read_encoder) #Read encoder messages
+    #Read encoder messages
+    # self.create_timer(0.001, self.read_encoder_lf) 
+    # self.create_timer(0.001, self.read_encoder_lr) 
+    # self.create_timer(0.001, self.read_encoder_rr) 
+    # self.create_timer(0.001, self.read_encoder_rf) 
     self.create_timer(0.1, self.update_joint_states) #Update the joint state based on the encoder messages, 10Hz
 
   def on_configure(self, state: LifecycleState):
@@ -169,14 +176,26 @@ class MotorControlNode(LifecycleNode):
       self.get_logger().info("")
       #  self.get_logger().info("Motor control frame could not be send")
 
-  def read_encoder(self):
-    if not self.active:
-      return
+  def read_can_loop(self):
+    while rclpy.ok():
+        if not self.active:
+            time.sleep(0.01)
+            continue
+        try:
+            msg = self.bus.recv(timeout=0.01)
+            if msg is not None:
+                self.process_can_message(msg)
+        except can.CanError as e:
+            self.get_logger().error(f"CAN error: {e}")
+
+  def process_can_message(self, msg):
+    # if not self.active:
+    #   return
     
-    msg = self.bus.recv(timeout=0.001)
+    # msg = self.bus.recv(timeout=0.001)
     #self.get_logger().info(f"Received message: {msg}")
     
-    if msg is not None:       
+    # if msg is not None:       
       can_id = msg.arbitration_id
  
       device_id = can_id & 0x3F
