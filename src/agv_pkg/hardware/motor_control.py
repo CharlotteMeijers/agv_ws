@@ -22,7 +22,7 @@ encoder_reset = [0.75, 0.0, 0.25, 0.5]
 gear_ratio = 5.5
 steering_ratio = 9424 / 203
 wheel_diameter = 0.072
-tolerance = 30
+tolerance = 5
 
 qos_joint_state = QoSProfile(
 depth = 10,
@@ -40,24 +40,28 @@ class MotorControlNode(LifecycleNode):
     self.active = False
     self.steer_active =  [False] * len(steer_ids) #Messages received
     self.steer_sending =  [0] * len(steer_ids) #Control frame 0=nothing send, 1=CW, 2=CCW
-    self.current_steer_position = encoder_reset.copy()
-    self.desired_steer_position = encoder_reset.copy()
+
+    self.current_steer_position = [0.0] * len(drive_ids)
+    self.desired_steer_position = [0.0] * len(drive_ids)
     self.current_steer_velocity = [0.0] * len(steer_ids)
     self.current_drive_position = [0.0] * len(drive_ids)
     self.current_drive_velocity = [0.0] * len(drive_ids)
+    self.desired_drive_velocity = [0.0] * len(drive_ids)
+    self.joint_state_angle = [0.0] * len(steer_ids)
     self.diff = [0.0] * len(steer_ids)
+
     self.steering_target = [None] * len(steer_ids) #Variable to store the target position for the steering motors
     self.last_steer_msg_time = time.time()  #Variable to save the last steering callback time
-    self.can_thread = threading.Thread(target=self.read_can_loop, daemon=True)
+
+    self.can_thread = threading.Thread(target=self.read_can_loop, daemon=True) #Read encoder messages
     self.can_thread.start()
+    self.motor_control_thread = threading.Thread(target=self.motor_control_loop, daemon=True)
+    self.motor_control_thread.start()
+    self.diff_loop_thread = threading.Thread(target=self.check_diff_loop, daemon=True)
+    self.diff_loop_thread.start()
 
     self.create_timer(0.1, self.check_steer)
-    self.create_timer(0.1, self.check_diff)
-    #Read encoder messages
-    # self.create_timer(0.001, self.read_encoder_lf) 
-    # self.create_timer(0.001, self.read_encoder_lr) 
-    # self.create_timer(0.001, self.read_encoder_rr) 
-    # self.create_timer(0.001, self.read_encoder_rf) 
+    #self.create_timer(0.1, self.check_diff)
     self.create_timer(0.1, self.update_joint_states) #Update the joint state based on the encoder messages, 10Hz
 
   def on_configure(self, state: LifecycleState):
@@ -65,7 +69,7 @@ class MotorControlNode(LifecycleNode):
 
     self.bus = can.interface.Bus(interface='socketcan', channel='can0', bitrate=1000000)
     # self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.0)
-    #self.drive_sub = self.create_subscription(Float64MultiArray, '/drive_module_velocity_controller/commands', self.drive_callback, 10)
+    self.drive_sub = self.create_subscription(Float64MultiArray, '/drive_module_velocity_controller/commands', self.drive_callback, 10)
     self.steer_sub = self.create_subscription(Float64MultiArray, '/drive_module_steering_angle_controller/commands', self.steer_callback, 10)
     self.joint_state_pub = self.create_publisher(JointState, '/current_joint_states', qos_joint_state)
     self.active = False
@@ -99,6 +103,8 @@ class MotorControlNode(LifecycleNode):
   def on_deactivate(self, state: LifecycleState):
     self.get_logger().info("IN on_deactivate")
     self.active = False
+    self.desired_steer_position = [0.0] * len(drive_ids)
+    self.desired_drive_velocity = [0.0] * len(drive_ids)
     return super().on_deactivate(state)
 
   def on_shutdown(self, state: LifecycleState):
@@ -115,8 +121,9 @@ class MotorControlNode(LifecycleNode):
       # self.get_logger().info(f'Received velocity commands: {msg.data}')
       for i, value in enumerate(msg.data):
         if i < len(drive_ids):
+            self.desired_drive_velocity[i] = value / 100
           # self.get_logger().info(f'Motor: {drive_ids[i]} gets the command: {float(value)}')         
-          self.send_control_frame(drive_ids[i], duty_cycle_mode, float(value/100))    
+          # self.send_control_frame(drive_ids[i], duty_cycle_mode, float(value/100))    
 
   def steer_callback(self, msg: Float64MultiArray):
     if self.active:
@@ -145,15 +152,16 @@ class MotorControlNode(LifecycleNode):
         return
         
      for i, value in enumerate(self.diff):
-            if self.diff[i] > tolerance and self.steer_sending[i] != 1:
-                        self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.03)
-                        self.steer_sending[i] = 1
-                        #self.get_logger().info(f'Motor {steer_ids[i]} CW, desired position: {self.desired_steer_position[i]}, current position: {self.current_steer_position[i]}, difference: {self.diff[i]}')
-            elif self.diff[i] < -tolerance and self.steer_sending[i] != 2:
-                        self.send_control_frame(steer_ids[i], duty_cycle_mode, -0.03)
-                        self.steer_sending[i] = 2
-                        #self.get_logger().info(f'Motor {steer_ids[i]} CCW')
-            elif self.diff[i] < tolerance and self.diff[i] > -tolerance and self.steer_sending[i] != 0:
+            if self.diff[i] > tolerance or self.diff[i] < - tolerance:
+              if self.diff[i] > 180 and self.steer_sending[i] != 1:
+                          self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.03)
+                          self.steer_sending[i] = 1 
+                          #self.get_logger().info(f'Motor {steer_ids[i]} CW, desired position: {self.desired_steer_position[i]}, current position: {self.current_steer_position[i]}, difference: {self.diff[i]}')
+              elif self.diff[i] < 180 and self.steer_sending[i] != 2:
+                          self.send_control_frame(steer_ids[i], duty_cycle_mode, -0.03)
+                          self.steer_sending[i] = 2
+                          #self.get_logger().info(f'Motor {steer_ids[i]} CCW')
+            elif self.steer_sending[i] != 0:
                         self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.0)
                         self.steer_sending[i] = 0
                         #self.get_logger().info(f'Motor {steer_ids[i]} reached the desired position')
@@ -187,6 +195,25 @@ class MotorControlNode(LifecycleNode):
                 self.process_can_message(msg)
         except can.CanError as e:
             self.get_logger().error(f"CAN error: {e}")
+
+  def motor_control_loop(self):
+    while rclpy.ok():
+        if not self.active:
+            time.sleep(0.01)
+            continue
+        for i, value in enumerate(self.desired_drive_velocity):
+            if value is not 0:
+              self.send_control_frame(drive_ids[i], duty_cycle_mode, value)
+        time.sleep(0.05) 
+
+  def check_diff_loop(self):
+    while rclpy.ok():
+        if not self.active:
+            time.sleep(0.01)
+            continue
+        self.check_diff()
+        time.sleep(0.02)  # 50 Hz
+
 
   def process_can_message(self, msg):
     # if not self.active:
@@ -255,16 +282,20 @@ class MotorControlNode(LifecycleNode):
           if motor_id == steer_ids[0]:
                   self.current_steer_position[0] = angle_degrees
                   self.current_steer_velocity[0] = rpm
+                  self.joint_state_angle[0] = accumulated_angle / 10
                   # self.get_logger().info(f"current_steer_position: {angle_degrees}, current_steer_velocity: {rpm}")
           elif motor_id == steer_ids[1]:
                   self.current_steer_position[1] = angle_degrees
                   self.current_steer_velocity[1] = rpm
+                  self.joint_state_angle[1] = accumulated_angle / 10
           elif motor_id == steer_ids[2]:
                   self.current_steer_position[2] = angle_degrees
                   self.current_steer_velocity[2] = rpm
+                  self.joint_state_angle[2] = accumulated_angle / 10
           elif motor_id == steer_ids[3]:
                   self.current_steer_position[3] = angle_degrees
                   self.current_steer_velocity[3] = rpm
+                  self.joint_state_angle[3] = accumulated_angle / 10
                 
         # self.current_position[i] = norm_angle
         #self.get_logger().info(f"Raw position: {raw_position}, rpm: {rpm}, turning angle per second {turning_angle}, accumalted angle {accumulated_angle}, normalised angle {norm_angle}")
@@ -301,10 +332,10 @@ class MotorControlNode(LifecycleNode):
         "joint_chassis_to_steering_right_front"
     ]
     msg.position = [
-        self.current_steer_position[0]*math.pi/180-math.pi,
-        self.current_steer_position[1]*math.pi/180-math.pi,
-        self.current_steer_position[2]*math.pi/180-math.pi,
-        self.current_steer_position[3]*math.pi/180-math.pi,
+        self.joint_state_angle[0],
+        self.joint_state_angle[1],
+        self.joint_state_angle[2],
+        self.joint_state_angle[3],
         self.current_drive_position[0],
         self.current_drive_position[1],
         self.current_drive_position[2],
