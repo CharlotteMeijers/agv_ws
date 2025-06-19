@@ -71,7 +71,7 @@ class MotorControlNode(LifecycleNode):
     # self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.0)
     self.drive_sub = self.create_subscription(Float64MultiArray, '/drive_module_velocity_controller/commands', self.drive_callback, 10)
     self.steer_sub = self.create_subscription(Float64MultiArray, '/drive_module_steering_angle_controller/commands', self.steer_callback, 10)
-    self.joint_state_pub = self.create_publisher(JointState, '/current_joint_states', qos_joint_state)
+    self.joint_state_pub = self.create_publisher(JointState, '/joint_states', qos_joint_state)
     self.active = False
 
     try:
@@ -202,7 +202,7 @@ class MotorControlNode(LifecycleNode):
             time.sleep(0.01)
             continue
         for i, value in enumerate(self.desired_drive_velocity):
-            if value is not 0:
+            if value != 0 and self.steer_sending == [0] * len(steer_ids):
               self.send_control_frame(drive_ids[i], duty_cycle_mode, value)
         time.sleep(0.05) 
 
