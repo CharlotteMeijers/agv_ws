@@ -142,7 +142,7 @@ class MotorControlNode(LifecycleNode):
         return
      #if self.steer_active[i] == True:
      for i, value in enumerate(self.desired_steer_position):
-                self.diff[i] = self.desired_steer_position[i] - self.current_steer_position[i]
+                self.diff[i] = (self.desired_steer_position[i] - self.current_steer_position[i] + 180) % 360 - 180
      #self.get_logger().info(f'difference: {self.diff[0]}, desired: {self.desired_steer_position[0]}, encoder: {self.current_steer_position[0]}')
      #self.get_logger().info(f'desired: {self.desired_steer_position}')
      #self.get_logger().info(f'encoder: {self.current_steer_position}')
@@ -152,12 +152,12 @@ class MotorControlNode(LifecycleNode):
         return
         
      for i, value in enumerate(self.diff):
-            if self.diff[i] > tolerance or self.diff[i] < - tolerance:
-              if self.diff[i] > 180 and self.steer_sending[i] != 1:
+            if abs(self.diff[i]) > tolerance:
+              if self.diff[i] > 0 and self.steer_sending[i] != 1:
                           self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.03)
                           self.steer_sending[i] = 1 
                           #self.get_logger().info(f'Motor {steer_ids[i]} CW, desired position: {self.desired_steer_position[i]}, current position: {self.current_steer_position[i]}, difference: {self.diff[i]}')
-              elif self.diff[i] < 180 and self.steer_sending[i] != 2:
+              elif self.diff[i] < 0 and self.steer_sending[i] != 2:
                           self.send_control_frame(steer_ids[i], duty_cycle_mode, -0.03)
                           self.steer_sending[i] = 2
                           #self.get_logger().info(f'Motor {steer_ids[i]} CCW')
@@ -202,8 +202,13 @@ class MotorControlNode(LifecycleNode):
             time.sleep(0.01)
             continue
         for i, value in enumerate(self.desired_drive_velocity):
-            if value != 0 and self.steer_sending == [0] * len(steer_ids):
-              self.send_control_frame(drive_ids[i], duty_cycle_mode, value)
+            if value != 0:
+              if self.steer_sending == [0] * len(steer_ids):
+                self.send_control_frame(drive_ids[i], duty_cycle_mode, value)
+              else:
+                self.send_control_frame(drive_ids[i], duty_cycle_mode, value/10)
+            else:
+              self.send_control_frame(drive_ids[i], duty_cycle_mode, 0.0)
         time.sleep(0.05) 
 
   def check_diff_loop(self):
@@ -322,14 +327,14 @@ class MotorControlNode(LifecycleNode):
     msg = JointState()
     msg.header.stamp = self.get_clock().now().to_msg()
     msg.name = [
-        "joint_steering_to_wheel_left_front",   
-        "joint_steering_to_wheel_left_rear",    
-        "joint_steering_to_wheel_right_rear",  
-        "joint_steering_to_wheel_right_front",   
         "joint_chassis_to_steering_left_front",
         "joint_chassis_to_steering_left_rear", 
         "joint_chassis_to_steering_right_rear", 
-        "joint_chassis_to_steering_right_front"
+        "joint_chassis_to_steering_right_front",
+        "joint_steering_to_wheel_left_front",   
+        "joint_steering_to_wheel_left_rear",    
+        "joint_steering_to_wheel_right_rear",  
+        "joint_steering_to_wheel_right_front"  
     ]
     msg.position = [
         self.joint_state_angle[0],

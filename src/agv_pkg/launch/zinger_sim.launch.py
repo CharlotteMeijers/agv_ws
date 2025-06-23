@@ -28,6 +28,18 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     make_new_map = LaunchConfiguration('make_new_map')
     
+    # map_file_path = os.path.join(
+    #     get_package_share_directory(package_name),
+    #     'config',
+    #     'home_map.yaml'
+    # )
+
+    # localisation_params_path = os.path.join(
+    #     get_package_share_directory(package_name),
+    #     'config',
+    #     'localisation_amcl.yaml'
+    # )
+    
     if use_sim_time == 'true':
         use_sim_bool = True
     else:

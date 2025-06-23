@@ -14,8 +14,12 @@ For navigation:
  - ros-jazzy-joint-state-publisher
 
 For the real hardware:
+ - ros-jazzy-controller-manager
+ - ros-jazzy-teleop-twist-joy
+ - ros-jazzy-joy
  - ros-jazzy-ros2-socketcan
  - libudev-dev
+ - git clone https://github.com/Myzhar/ldrobot-lidar-ros2.git
 
 # Run commands
 ## Robot description
@@ -118,6 +122,48 @@ ros2 lifecycle set /heartbeat_node activate
 ros2 lifecycle set /ldlidar_node configure
 ros2 lifecycle set /ldlidar_node activate
 
-
-
 ~/agv_ws/src/ldrobot-lidar-ros2/scripts$ ./create_udev_rules.sh
+
+# Split navigation and motor control
+## On both devices
+Make a file:  
+        
+        nano ~/cyclonedds.xml
+
+With:
+<CycloneDDS>
+ <Domain>
+  <General>
+   <NetworkInterfaceAddress>XXX.XXX.XXX.*</NetworkInterfaceAddress>
+  </General>
+ </Domain>
+</CycloneDDS>
+
+
+Adjust bashrc:
+
+        nano ~/.bashrc
+
+By adding:
+export ROS_DOMAIN_ID=8
+export CYCLONEDDS_URI=file:///home/zwier/cyclonedds.xml
+
+Disable the firewall:
+        
+        sudo ufw diable
+
+Restart daemon
+
+        ros2 daemon stop
+        ros2 deamon start
+
+## Test connection
+On one device:
+
+        ros2 topic pub /test std_msgs/Header "{stamp: {sec: $(date +%s)}, frame_id: 'ping'}" -r 1 --qos-reliability best_effort --qos-durability volatile
+
+The other device:
+
+        ros2 topic echo /test
+
+

@@ -232,13 +232,13 @@ class SwerveController(Node):
         # Get the drive module information from the URDF and turn it into a list of drive modules.
         #
         # For now we don't read the URDF and just hard-code the drive modules
-        robot_length = 0.5111 #511.1mm
-        robot_width = 0.3111 #311.1mm
+        robot_length = 0.35
+        robot_width = 0.30
 
-        steering_radius = 0.0 #0mm
+        steering_radius = 0.05
 
-        wheel_radius = 0.0378 #75.6mm diameter, 37.8mm
-        wheel_width = 0.0254 #25.4mm
+        wheel_radius = 0.04
+        wheel_width = 0.05
 
         # store the steering joints
         steering_joint_names = self.get_parameter("steering_joints").value
