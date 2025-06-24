@@ -60,9 +60,9 @@ class MotorControlNode(LifecycleNode):
     self.diff_loop_thread = threading.Thread(target=self.check_diff_loop, daemon=True)
     self.diff_loop_thread.start()
 
-    self.create_timer(0.1, self.check_steer)
+    self.create_timer(0.02, self.check_steer) #50Hz
     #self.create_timer(0.1, self.check_diff)
-    self.create_timer(0.1, self.update_joint_states) #Update the joint state based on the encoder messages, 10Hz
+    self.create_timer(0.05, self.update_joint_states) #Update the joint state based on the encoder messages, 20Hz
 
   def on_configure(self, state: LifecycleState):
     self.get_logger().info("IN on_configure")
@@ -154,11 +154,11 @@ class MotorControlNode(LifecycleNode):
      for i, value in enumerate(self.diff):
             if abs(self.diff[i]) > tolerance:
               if self.diff[i] > 0 and self.steer_sending[i] != 1:
-                          self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.03)
+                          self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.05)
                           self.steer_sending[i] = 1 
                           #self.get_logger().info(f'Motor {steer_ids[i]} CW, desired position: {self.desired_steer_position[i]}, current position: {self.current_steer_position[i]}, difference: {self.diff[i]}')
               elif self.diff[i] < 0 and self.steer_sending[i] != 2:
-                          self.send_control_frame(steer_ids[i], duty_cycle_mode, -0.03)
+                          self.send_control_frame(steer_ids[i], duty_cycle_mode, -0.05)
                           self.steer_sending[i] = 2
                           #self.get_logger().info(f'Motor {steer_ids[i]} CCW')
             elif self.steer_sending[i] != 0:
@@ -204,12 +204,12 @@ class MotorControlNode(LifecycleNode):
         for i, value in enumerate(self.desired_drive_velocity):
             if value != 0:
               if self.steer_sending == [0] * len(steer_ids):
-                self.send_control_frame(drive_ids[i], duty_cycle_mode, value)
+                self.send_control_frame(drive_ids[i], duty_cycle_mode, value/2)
               else:
                 self.send_control_frame(drive_ids[i], duty_cycle_mode, value/10)
             else:
               self.send_control_frame(drive_ids[i], duty_cycle_mode, 0.0)
-        time.sleep(0.05) 
+        time.sleep(0.05) # 20 Hz
 
   def check_diff_loop(self):
     while rclpy.ok():
@@ -305,19 +305,19 @@ class MotorControlNode(LifecycleNode):
         # self.current_position[i] = norm_angle
         #self.get_logger().info(f"Raw position: {raw_position}, rpm: {rpm}, turning angle per second {turning_angle}, accumalted angle {accumulated_angle}, normalised angle {norm_angle}")
             
-  def update_steering_targets(self):
-    if not self.active:
-      return
-    for i, target_angle in enumerate(self.steering_target):
-      if target_angle is not None:
-         self.read_steering_messages(i)
-         if self.has_reached_position(self.current_steer_position[i], target_angle):
-            self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.001)
-#            self.get_logger().info(f"Tying to reach the desired angle of the motor {steer_ids[i]}")            
-         else:
-            self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.0)
-#            self.get_logger().info(f"Steering motor {steer_ids[i]} reached target position {target_angle}")
-            self.steering_target[i] = None
+#   def update_steering_targets(self):
+#     if not self.active:
+#       return
+#     for i, target_angle in enumerate(self.steering_target):
+#       if target_angle is not None:
+#          self.read_steering_messages(i)
+#          if self.has_reached_position(self.current_steer_position[i], target_angle):
+#             self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.001)
+# #            self.get_logger().info(f"Tying to reach the desired angle of the motor {steer_ids[i]}")            
+#          else:
+#             self.send_control_frame(steer_ids[i], duty_cycle_mode, 0.0)
+# #            self.get_logger().info(f"Steering motor {steer_ids[i]} reached target position {target_angle}")
+#             self.steering_target[i] = None
 
   def update_joint_states(self):
     if not self.active:
