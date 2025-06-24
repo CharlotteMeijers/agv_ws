@@ -108,8 +108,8 @@ To be able to use the home.sdf, add the following to the ~/.bashrc
 Don't forget to source the ~/.bashrc before running again
 
 # Hardware
-ros2 topic pub /drive_module_velocity_controller/commands std_msgs/msg/Float64MultiArray "{layout=std_msgs.msg.MultiArrayLayout(dim=[],data_offset=0), data=[0.0, 0.0, 0.0, 0.0]}"
-ros2 topic pub /drive_module_steer_angle_controller/commands std_msgs/msg/Float64MultiArray "{layout=std_msgs.msg.MultiArrayLayout(dim=[],data_offset=0), data=[0.0, 0.0, 0.0, 0.0]}"
+ros2 topic pub /drive_module_steering_angle_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
+ros2 topic pub /drive_module_velocity_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
 
 python3 heartbeat.py
 python3 control_motor.py
@@ -139,6 +139,7 @@ With:
  </Domain>
 </CycloneDDS>
 
+in which XXX.XXX.XXX. is the address of the sub network.
 
 Adjust bashrc:
 
