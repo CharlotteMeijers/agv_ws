@@ -131,6 +131,7 @@ Make a file:
         nano ~/cyclonedds.xml
 
 With:
+"
 <CycloneDDS>
  <Domain>
   <General>
@@ -138,6 +139,7 @@ With:
   </General>
  </Domain>
 </CycloneDDS>
+" 
 
 in which XXX.XXX.XXX. is the address of the sub network.
 
@@ -156,7 +158,7 @@ Disable the firewall:
 Restart daemon
 
         ros2 daemon stop
-        ros2 deamon start
+        ros2 daemon start
 
 ## Test connection
 On one device:
