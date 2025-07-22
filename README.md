@@ -19,7 +19,22 @@ For the real hardware:
  - ros-jazzy-joy
  - ros-jazzy-ros2-socketcan
  - libudev-dev
- - git clone https://github.com/Myzhar/ldrobot-lidar-ros2.git
+ - git clone https://github.com/Myzhar/ldrobot-lidar-ros2.git (added as submodule in this workspace)
+
+ - nav2-util
+ - python3-serial
+ - python3-can
+ - python3-rosdep
+
+To complete the rosdep installation:
+    
+    sudo rosdep init
+    rosdep update
+
+Don't forget to build and source the workspace before start running commands:
+       cd ~/agv_ws
+       colcon build
+       source install/setup.bash
 
 # Run commands
 ## Robot description
@@ -63,8 +78,6 @@ or two seperate terminals with:
 
         ros2 launch agv_pkg sim.launch.py use_sim_time:=true 
         ros2 launch slam_toolbox online_async_launch.py use_sim_time:=true slam_params_file:=agv_pkg/config/mapper_params_online_async.yaml
-
-
         
 Use rviz slam toolbox panel to save in different formats (save and serialized) or 
 
@@ -72,7 +85,14 @@ Use rviz slam toolbox panel to save in different formats (save and serialized) o
 
 Online asynchronized SLAM is used. Online means it runs live and not on recorded logs. Asynchronized means that not every scan needs to be processed, but only the last one. This avoids lagging but means that scans can be skipped.
 
-### Localise only tested for Zinger: 
+### Home.sdf
+To be able to use the home.sdf, add the following to the ~/.bashrc
+
+        export GZ_SIM_RESOURCE_PATH=~/agv_ws/src/agv_pkg/worlds/gazebo_models
+
+Don't forget to source the ~/.bashrc before running again
+
+### Localise (only tested for Zinger): 
 Next to the zinger Gazebo launch:
         
         ros2 launch agv_pkg zinger_sim.launch.py use_sim_time:=true 
@@ -83,7 +103,7 @@ Run the localisation file:
 
 Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl (RVIZ)
 
-### Navigate to point only tested for Zinger: 
+### Navigate to point (only tested for Zinger): 
 Next to the zinger Gazebo launch:
         
         ros2 launch agv_pkg zinger_sim.launch.py use_sim_time:=true 
@@ -94,35 +114,68 @@ Run the localisation file:
 
 Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl and use the 2D goal pose to let the zinger robot drive to that pose (RVIZ)
 
-# Update current pose (what the Jetson Nano should sent)
-ros2 topic pub -1 /initialpose geometry_msgs/PoseWithCovarianceStamped '{ header: {stamp: {sec: 0, nanosec: 0}, frame_id: "map"}, pose: { pose: {position: {x: 0.1, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0} }}}'
+### Update the current pose (what the Jetson Nano should sent)
+The Jetson Nano schould get the pose of the calibration point out of the qr-code. This pose should be published on the initial pose topic, which can be done with:
 
-Use docker for the communication between jetson and raspberry
-update initial pose on the jetson, send that to the raspberry
+        ros2 topic pub -1 /initialpose geometry_msgs/PoseWithCovarianceStamped '{ header: {stamp: {sec: 0, nanosec: 0}, frame_id: "map"}, pose: { pose: {position: {x: 0.1, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0} }}}'
 
-# Home.sdf
-To be able to use the home.sdf, add the following to the ~/.bashrc
 
-        export GZ_SIM_RESOURCE_PATH=~/agv_ws/src/agv_pkg/worlds/gazebo_models
+# Hardware for the physical robot
+Adjust the start-up script to be able to use the CANHAT:
 
-Don't forget to source the ~/.bashrc before running again
+        sudo nano /boot/firmware/config.txt 
 
-# Hardware
-ros2 topic pub /drive_module_steering_angle_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
-ros2 topic pub /drive_module_velocity_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
+and add:
 
-python3 heartbeat.py
-python3 control_motor.py
-ros2 launch ldlidar_node ldlidar_bringup.launch.py 
+        dtparam=spi=on
+        dtoverlay=mcp2515-can0,oscillator=12000000,interrupt=25,spimaxfrequency=2000000
 
-ros2 lifecycle set /heartbeat_node configure
-ros2 lifecycle set /heartbeat_node activate
-ros2 lifecycle set /motor_control_node configure
-ros2 lifecycle set /heartbeat_node activate
-ros2 lifecycle set /ldlidar_node configure
-ros2 lifecycle set /ldlidar_node activate
+Increase the buffer:
+       
+        sudo ifconfig can0 txqueuelen 65536
 
-~/agv_ws/src/ldrobot-lidar-ros2/scripts$ ./create_udev_rules.sh
+After rebooting, the CANHAT will work.
+
+## Lidar
+For the lidar, first install the udev rules:
+
+        cd ~/agv_ws/src/ldrobot-lidar-ros2/scripts
+        ./create_udev_rules.sh
+
+Build the packages in the workspace again.
+
+Then update the environment variables:
+
+        echo source $(pwd)/install/local_setup.bash >> ~/.bashrc
+        source ~/.bashrc
+
+The lidar can be launched:
+
+        ros2 launch ldlidar_node ldlidar_bringup.launch.py 
+        ros2 lifecycle set /ldlidar_node configure
+        ros2 lifecycle set /ldlidar_node activate
+
+Also start the lidar filter such that the robot frame will not be visible in the \scan topic:
+
+        python3 src/agv_pkg/hardware/lidar_filter.py 
+
+## Motors
+To be able to use the real hardware on the physical robot, the following lifecycles should be launched, configured and activated:
+
+       python3 heartbeat.py
+       python3 control_motor.py
+       ros2 lifecycle set /heartbeat_node configure
+       ros2 lifecycle set /heartbeat_node activate
+       ros2 lifecycle set /motor_control_node configure
+       ros2 lifecycle set /heartbeat_node activate
+
+To test the motors without a joystick, the following commands can be used. A data value between 0 and 1 will turn the motor on. 
+
+       ros2 topic pub /drive_module_steering_angle_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
+       ros2 topic pub /drive_module_velocity_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
+
+To drive using the joystick, start the navigation.launch.py:
+       ros2 launch agv_pkg navigation.launch.py use_sim_time:=false
 
 # Split navigation and motor control
 ## On both devices
@@ -131,7 +184,7 @@ Make a file:
         nano ~/cyclonedds.xml
 
 With:
-"
+```xml
 <CycloneDDS>
  <Domain>
   <General>
@@ -139,7 +192,7 @@ With:
   </General>
  </Domain>
 </CycloneDDS>
-" 
+```
 
 in which XXX.XXX.XXX. is the address of the sub network.
 
