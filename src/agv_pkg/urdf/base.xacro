@@ -109,7 +109,7 @@
             <origin rpy="0 0 0" xyz="0 0 0.0"/>
             <mass value="${chassis_mass}"/>
             <inertia
-                ixx="${chassis_mass / 12.0 * (chassis_width * chassis_width + chassis_height * chassis_height)}"
+                ixx="${(chassis_mass / 12.0 * (chassis_width * chassis_width + chassis_height * chassis_height))}"
                 ixy="0"
                 ixz="0"
                 iyy="${chassis_mass / 12.0 * (chassis_length * chassis_length + chassis_height * chassis_height)}"

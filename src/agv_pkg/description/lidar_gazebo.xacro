@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot">
+
+  <xacro:macro name="gazebo_sensor_ldlidar" params="name">
+    <gazebo reference="ldlidar_base">
+      <sensor name="${name}" type="gpu_lidar">
+        <pose>0 0 0.02 0 0 0</pose>
+        <alwaysOn>true</alwaysOn>
+        <update_rate>25</update_rate>
+        <topic>scan</topic>
+        <visualize>true</visualize>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1.0</resolution>
+              <min_angle>${-pi}</min_angle>
+              <max_angle>${pi}</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.15</min>
+            <max>12.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </lidar>
+      </sensor>
+    </gazebo>
+
+    <gazebo reference="ldlidar_mount_joint">
+      <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+  </xacro:macro>
+
+  <!-- Activeer de Gazebo-sensor -->
+  <xacro:gazebo_sensor_ldlidar name="ldlidar_front" />
+
+</robot>

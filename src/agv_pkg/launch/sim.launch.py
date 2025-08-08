@@ -28,6 +28,18 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     make_new_map = LaunchConfiguration('make_new_map')
     
+    # map_file_path = os.path.join(
+    #     get_package_share_directory(package_name),
+    #     'config',
+    #     'home_map.yaml'
+    # )
+
+    # localisation_params_path = os.path.join(
+    #     get_package_share_directory(package_name),
+    #     'config',
+    #     'localisation_amcl.yaml'
+    # )
+    
     if use_sim_time == 'true':
         use_sim_bool = True
     else:
@@ -38,7 +50,7 @@ def generate_launch_description():
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': use_sim_time}.items()
+                )]), launch_arguments={'use_sim_time': use_sim_time, 'use_ros2_control': 'true'}.items()
     )
     ld.add_action(rsp)
 
@@ -60,11 +72,11 @@ def generate_launch_description():
         )
     ld.add_action(twist_mux)
     
-    # Use the empty world
+    # Use the world
     empty_world = os.path.join(
         get_package_share_directory(package_name),
         'worlds',
-        'obstacles.world'
+        'home.sdf'
         )    
     world = LaunchConfiguration('world')
     world_arg = DeclareLaunchArgument(
@@ -90,7 +102,7 @@ def generate_launch_description():
     ld.add_action(spawn_entity)
 
     controllers = TimerAction(
-        period=8.0,
+        period=10.0,
         actions= [
         #     GroupAction(
         # actions=[
@@ -135,6 +147,13 @@ def generate_launch_description():
         ]
     )
     ld.add_action(ros_gz_bridge)
+
+    ros_gz_image_bridge = Node(
+        package="ros_gz_image",
+        executable="image_bridge",
+        arguments=["/camera_left/image_raw", "/camera_right/image_raw"]
+    )
+    ld.add_action(ros_gz_image_bridge)
 
     # Launch the slam launch if there is a new map needed
     slam = IncludeLaunchDescription(

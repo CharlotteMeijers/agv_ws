@@ -32,6 +32,7 @@ install(
   PROGRAMS
     hardware/heartbeat.py
     hardware/motor_control.py
+    hardware/lidar_filter.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

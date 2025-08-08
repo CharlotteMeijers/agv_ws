@@ -24,6 +24,9 @@ steering_ratio = 9424 / 203
 wheel_diameter = 0.072
 tolerance = 5
 
+HEARTBEAT_ID = 0x2052C80  
+HEARTBEAT_DATA = [255] * 8
+
 qos_joint_state = QoSProfile(
 depth = 10,
 durability = DurabilityPolicy.VOLATILE,
@@ -35,6 +38,7 @@ class MotorControlNode(LifecycleNode):
     super().__init__("motor_control_node")
     self.get_logger().info("IN constructor")
     self.bus = None
+    self.heartbeat = None
     self.drive_sub = None
     self.steer_sub = None
     self.active = False
@@ -63,6 +67,8 @@ class MotorControlNode(LifecycleNode):
     self.create_timer(0.02, self.check_steer) #50Hz
     #self.create_timer(0.1, self.check_diff)
     self.create_timer(0.05, self.update_joint_states) #Update the joint state based on the encoder messages, 20Hz
+    self.heartbeat = self.create_timer(0.2, self.send_heartbeat_frame) 
+    self.heartbeat.cancel() #Don't start yet
 
   def on_configure(self, state: LifecycleState):
     self.get_logger().info("IN on_configure")
@@ -73,6 +79,7 @@ class MotorControlNode(LifecycleNode):
     self.steer_sub = self.create_subscription(Float64MultiArray, '/drive_module_steering_angle_controller/commands', self.steer_callback, 10)
     self.joint_state_pub = self.create_publisher(JointState, '/joint_states', qos_joint_state)
     self.active = False
+    self.heartbeat.reset()
 
     try:
       subprocess.run(["sudo", "ip", "link", "set", "can0", "up", "type", "can", "bitrate", "1000000"], check=True)
@@ -88,6 +95,7 @@ class MotorControlNode(LifecycleNode):
     self.destroy_subscription(self.drive_sub)
     self.destroy_subscription(self.steer_sub)
     self.destroy_publisher(self.joint_state_pub)
+    self.destroy_timer(self.heartbeat)
     subprocess.run(["sudo", "ip", "link", "set", "can0", "down"], check=True)
     self.get_logger().info("CAN interface can0 is down.")
 
@@ -105,6 +113,7 @@ class MotorControlNode(LifecycleNode):
     self.active = False
     self.desired_steer_position = [0.0] * len(drive_ids)
     self.desired_drive_velocity = [0.0] * len(drive_ids)
+    self.heartbeat.cancel()
     return super().on_deactivate(state)
 
   def on_shutdown(self, state: LifecycleState):
@@ -113,6 +122,7 @@ class MotorControlNode(LifecycleNode):
     self.destroy_subscription(self.drive_sub)
     self.destroy_subscription(self.steer_sub)
     self.destroy_publisher(self.joint_state_pub)
+    self.destroy_timer(self.heartbeat)
     self.active = False
     return TransitionCallbackReturn.SUCCESS
 
@@ -122,7 +132,7 @@ class MotorControlNode(LifecycleNode):
       for i, value in enumerate(msg.data):
         if i < len(drive_ids):
             self.desired_drive_velocity[i] = value / 100
-          # self.get_logger().info(f'Motor: {drive_ids[i]} gets the command: {float(value)}')         
+            # self.get_logger().info(f'Motor: {drive_ids[i]} gets the command: {float(value)}')         
           # self.send_control_frame(drive_ids[i], duty_cycle_mode, float(value/100))    
 
   def steer_callback(self, msg: Float64MultiArray):
@@ -203,7 +213,8 @@ class MotorControlNode(LifecycleNode):
             continue
         for i, value in enumerate(self.desired_drive_velocity):
             if value != 0:
-              if self.steer_sending == [0] * len(steer_ids):
+              # self.get_logger().info("Klaar om iets te sturen")
+              if all(d < 0.5 for d in self.diff):
                 self.send_control_frame(drive_ids[i], duty_cycle_mode, value/2)
               else:
                 self.send_control_frame(drive_ids[i], duty_cycle_mode, value/10)
@@ -361,6 +372,18 @@ class MotorControlNode(LifecycleNode):
  #   self.get_logger().info(f"msg: {msg}") 
 
     self.joint_state_pub.publish(msg)
+
+  def send_heartbeat_frame(self):
+    msg = can.Message(
+      arbitration_id = HEARTBEAT_ID, data = HEARTBEAT_DATA, is_extended_id = True
+    )
+
+    try:
+      self.bus.send(msg)
+      self.get_logger().info("Heartbeat sent")
+    except can.CanError:
+        self.get_logger().info("Heartbeat could not be send")
+
 
 
 def main(args=None):

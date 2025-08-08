@@ -24,6 +24,7 @@ ARGUMENTS = [
     ),
 ]
 
+
 def generate_launch_description():
 
     # Check if we're told to use sim time
@@ -47,6 +48,19 @@ def generate_launch_description():
         parameters=[params]
     )
     ld.add_action(node_robot_state_publisher)
+
+    laser_filter = Node(
+            package='hardware_agv',  
+            executable='lidar_filter',  
+            name='lidar_filter',
+            output='screen',
+            parameters=[
+                {'use_sim_time': use_sim_time},
+                {'input_topic': '/ldlidar_node/scan'},
+                {'output_topic': '/scan'}
+            ]
+    )
+    ld.add_action(laser_filter)
 
     # Launch!
     return ld

@@ -19,7 +19,19 @@ For the real hardware:
  - ros-jazzy-joy
  - ros-jazzy-ros2-socketcan
  - libudev-dev
- - git clone https://github.com/Myzhar/ldrobot-lidar-ros2.git
+ - git clone https://github.com/Myzhar/ldrobot-lidar-ros2.git (added as submodule in this workspace)
+
+ - nav2-util
+ - python3-serial
+ - python3-can
+ - python3-rosdep
+
+To complete the rosdep installation:
+    
+    sudo rosdep init
+    rosdep update
+
+
 
 # Run commands
 ## Robot description
@@ -108,11 +120,33 @@ To be able to use the home.sdf, add the following to the ~/.bashrc
 Don't forget to source the ~/.bashrc before running again
 
 # Hardware
+Adjust the start-up script to be able to use the CANHAT:
+
+        sudo nano /boot/firmware/config.txt 
+
+and add:
+
+        dtparam=spi=on
+        dtoverlay=mcp2515-can0,oscillator=12000000,interrupt=25,spimaxfrequency=2000000
+
+After rebooting, the CANHAT will work. To be sure, the buffer can also be increased:
+        
+        sudo ifconfig can0 txqueuelen 65536
+
+
 ros2 topic pub /drive_module_steering_angle_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
 ros2 topic pub /drive_module_velocity_controller/commands std_msgs/msg/Float64MultiArray "{layout: {dim: [], data_offset: 0}, data: [0.0, 0.0, 0.0, 0.0]}"
 
 python3 heartbeat.py
 python3 control_motor.py
+
+for the lidar:
+
+        cd ~/agv_ws/src/ldrobot-lidar-ros2/scripts/
+        ./create_udev_rules.sh
+        
+        rosdep install --from-paths src --ignore-src -r -y
+
 ros2 launch ldlidar_node ldlidar_bringup.launch.py 
 
 ros2 lifecycle set /heartbeat_node configure
