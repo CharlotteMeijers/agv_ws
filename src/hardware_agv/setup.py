@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'lidar_filter = hardware_agv.lidar_filter:main'
+            'lidar_filter = hardware_agv.lidar_filter:main',
         ],
     },
 )
