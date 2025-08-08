@@ -35,6 +35,22 @@ Don't forget to build and source the workspace before start running commands:
        cd ~/agv_ws
        colcon build
        source install/setup.bash
+ - git clone https://github.com/Myzhar/ldrobot-lidar-ros2.git (added as submodule in this workspace)
+
+ - nav2-util
+ - python3-serial
+ - python3-can
+ - python3-rosdep
+
+To complete the rosdep installation:
+    
+    sudo rosdep init
+    rosdep update
+
+Don't forget to build and source the workspace before start running commands:
+       cd ~/agv_ws
+       colcon build
+       source install/setup.bash
 
 # Run commands
 ## Robot description
@@ -103,7 +119,7 @@ Run the localisation file:
 
 Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl (RVIZ)
 
-### Navigate to point only tested for Zinger: 
+### Navigate to point (only tested for Zinger): 
 Next to the zinger Gazebo launch:
         
         ros2 launch agv_pkg zinger_sim.launch.py use_sim_time:=true 
@@ -114,6 +130,10 @@ Run the localisation file:
 
 Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl and use the 2D goal pose to let the zinger robot drive to that pose (RVIZ)
 
+### Update the current pose (what the Jetson Nano should sent)
+The Jetson Nano schould get the pose of the calibration point out of the qr-code. This pose should be published on the initial pose topic, which can be done with:
+
+        ros2 topic pub -1 /initialpose geometry_msgs/PoseWithCovarianceStamped '{ header: {stamp: {sec: 0, nanosec: 0}, frame_id: "map"}, pose: { pose: {position: {x: 0.1, y: 0.0, z: 0.0}, orientation: {x: 0.0, y: 0.0, z: 0.0} }}}'
 ### Update the current pose (what the Jetson Nano should sent)
 The Jetson Nano schould get the pose of the calibration point out of the qr-code. This pose should be published on the initial pose topic, which can be done with:
 
@@ -184,6 +204,7 @@ Make a file:
 
 With:
 ```xml
+```xml
 <CycloneDDS>
  <Domain>
   <General>
@@ -191,6 +212,7 @@ With:
   </General>
  </Domain>
 </CycloneDDS>
+```
 ```
 
 in which XXX.XXX.XXX. is the address of the sub network.
