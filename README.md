@@ -35,22 +35,49 @@ Don't forget to build and source the workspace before start running commands:
        cd ~/agv_ws
        colcon build
        source install/setup.bash
- - git clone https://github.com/Myzhar/ldrobot-lidar-ros2.git (added as submodule in this workspace)
 
- - nav2-util
- - python3-serial
- - python3-can
- - python3-rosdep
+# Summary
+## Simulation
+First terminal:
 
-To complete the rosdep installation:
-    
-    sudo rosdep init
-    rosdep update
+        ros2 launch agv_pkg sim.launch.py use_sim_tim:=true
 
-Don't forget to build and source the workspace before start running commands:
-       cd ~/agv_ws
-       colcon build
-       source install/setup.bash
+Second terminal:
+
+        ros2 launch agv_pkg navigation.launch.py use_sim_tim:=true
+        
+Third terminal:        
+        rviz2 -d src/agv_pkg/config/view_bot_planning.rviz
+
+## Robot with real hardware
+### On the laptop
+First terminal:
+
+        ros2 launch agv_pkg zinger_real_hardware.launch.py use_sim_time:=false 
+
+Second terminal:
+
+        ros2 launch agv_pkg navigation.launch.py use_sim_tim:=false
+        
+Third terminal:        
+
+        ssh zwier@192.168.255.54
+        cd agv_ws/src/agv_pkg/hardware
+        python3 heartbeat.py
+
+Forth terminal:        
+
+        ssh zwier@192.168.255.54
+        cd agv_ws/src/agv_pkg/hardware
+        python3 motor_control.py
+
+Fifth terminal:        
+
+        ssh zwier@192.168.255.54
+        ros2 lifecycle set /heartbeat_node configure
+        ros2 lifecycle set /heartbeat_node activate
+        ros2 lifecycle set /motor_control_node configure
+        ros2 lifecycle set /motor_control_node activate
 
 # Run commands
 ## Robot description
@@ -108,10 +135,10 @@ To be able to use the home.sdf, add the following to the ~/.bashrc
 
 Don't forget to source the ~/.bashrc before running again
 
-### Localise only tested for Zinger: 
-Next to the zinger Gazebo launch:
+### Localise: 
+Next to the Gazebo launch:
         
-        ros2 launch agv_pkg zinger_sim.launch.py use_sim_time:=true 
+        ros2 launch agv_pkg sim.launch.py use_sim_time:=true 
 
 Run the localisation file:
 
@@ -119,14 +146,14 @@ Run the localisation file:
 
 Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl (RVIZ)
 
-### Navigate to point (only tested for Zinger): 
-Next to the zinger Gazebo launch:
+### Navigate to point: 
+Next to the Gazebo launch:
         
-        ros2 launch agv_pkg zinger_sim.launch.py use_sim_time:=true 
+        ros2 launch agv_pkg sim.launch.py use_sim_time:=true 
 
-Run the localisation file:
+Run the navigation file:
 
-        ros2 launch agv_pkg zinger_nav.launch.py use_sim_time:=true
+        ros2 launch agv_pkg navigation.launch.py use_sim_time:=true
 
 Click on the 2D Pose estimate to give an initial pose (with orientation) for amcl and use the 2D goal pose to let the zinger robot drive to that pose (RVIZ)
 
@@ -169,15 +196,15 @@ Then update the environment variables:
         echo source $(pwd)/install/local_setup.bash >> ~/.bashrc
         source ~/.bashrc
 
-The lidar can be launched:
+The lidar can be launched seperately:
 
         ros2 launch ldlidar_node ldlidar_bringup.launch.py 
         ros2 lifecycle set /ldlidar_node configure
         ros2 lifecycle set /ldlidar_node activate
 
-Also start the lidar filter such that the robot frame will not be visible in the \scan topic:
+But is also added to the real_hardware_launch file:
 
-        python3 src/agv_pkg/hardware/lidar_filter.py 
+        ros2 launch agv_pkg zinger_real_hardware.launch.py use_sim_time:=false 
 
 ## Motors
 To be able to use the real hardware on the physical robot, the following lifecycles should be launched, configured and activated:
@@ -186,7 +213,7 @@ To be able to use the real hardware on the physical robot, the following lifecyc
        ros2 lifecycle set /heartbeat_node configure
        ros2 lifecycle set /heartbeat_node activate
        ros2 lifecycle set /motor_control_node configure
-       ros2 lifecycle set /heartbeat_node activate
+       ros2 lifecycle set /motor_control_node activate
 
 To test the motors without a joystick, the following commands can be used. A data value between 0 and 1 will turn the motor on. 
 
@@ -197,25 +224,24 @@ To drive using the joystick, start the navigation.launch.py:
        ros2 launch agv_pkg navigation.launch.py use_sim_time:=false
 
 # Split navigation and motor control
+To reduce the computational load on the Raspberry Pi, the navigation and motor control can be split over a laptop and the Raspberry Pi. This makes the Raspberry Pi only in charge of controlling the hardware. The connection can be set up as follows:
+
 ## On both devices
 Make a file:  
         
         nano ~/cyclonedds.xml
 
 With:
-```xml
-```xml
-<CycloneDDS>
- <Domain>
-  <General>
-   <NetworkInterfaceAddress>XXX.XXX.XXX.*</NetworkInterfaceAddress>
-  </General>
- </Domain>
-</CycloneDDS>
-```
-```
 
-in which XXX.XXX.XXX. is the address of the sub network.
+       <CycloneDDS>
+        <Domain>
+         <General>
+          <NetworkInterfaceAddress>XXX.XXX.XXX.*</NetworkInterfaceAddress>
+         </General>
+        </Domain>
+       </CycloneDDS>
+      
+in which XXX.XXX.XXX. is the address of the sub network
 
 Adjust bashrc:
 
